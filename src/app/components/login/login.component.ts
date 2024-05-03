@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgModel } from '@angular/forms';
+import { EmployeeService } from 'src/app/services/employee.service';
+
 
 @Component({
   selector: 'app-login',
@@ -8,9 +11,17 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private service:EmployeeService) { 
+  }
 
   hide:any;
+
+  postObj:any=
+  {
+    username:'',
+    password:''
+  }
+
   ngOnInit(): void {
   this.hide=true;
   }
@@ -21,5 +32,17 @@ export class LoginComponent implements OnInit {
   signUp()
   {
     this.router.navigateByUrl("/register"); 
+  }
+  onSubmit()
+  {
+    this.service.login(this.postObj).subscribe(
+      (response)=>{
+
+      },
+      (error)=>
+        {
+          
+        }
+    )
   }
 }

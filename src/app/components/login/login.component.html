@@ -19,15 +19,15 @@ background-color: #F9E6E6;padding: 5%;
                 &nbsp;
                 Login with Google 
             </div> -->
-            <div id="g_id_onload"
+            <!-- <div id="g_id_onload"
      data-client_id="898020905059-8ksp6sgjpci8jfqfua0v8taoacg9eg91.apps.googleusercontent.com"
      data-context="signin"
      data-login_uri="http://localhost:8080/login"
      data-auto_select="true"
      data-itp_support="true">
-</div>
+</div> -->
 
-  <div
+  <!-- <div
     class="g_id_signin"
     data-type="standard"
     data-shape="pill"
@@ -35,31 +35,34 @@ background-color: #F9E6E6;padding: 5%;
     data-text="signin_with"
     data-size="large"
     data-logo_alignment="left"
-  ></div>
+  ></div> -->
         </div>
         <div class="mt-4 text-gray-500 flex justify-around 
         border-gray-400 border-b-2 md:w-4/5
         " >
             or Login with Email
         </div>
-        <div class="mt-4 flex flex-col">
-            <div class="font-bold mb-2">Email</div>
-            <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
-            placeholder="Enter your email id" type="email" required>
-        </div>
-        <div class="mt-4 flex flex-col">
-            <div class="font-bold mb-2">Password</div>
-            <div class="flex flex-row">
+        <form>
+            <div class="mt-4 flex flex-col">
+                <div class="font-bold mb-2">Email</div>
                 <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
-                placeholder="Enter your Password" type="password" required [type]="hide ? 'password' : 'text' ">
-                <span *ngIf="hide" class="flex items-center">
-                    <img src="../../../assets/hidden.png" alt="hidden" class="w-6 cursor-pointer" (click)="showPassword()">
-                </span>
-                <span *ngIf="!hide" class="flex items-center">
-                    <img src="../../../assets/eye.png" alt="eye" class="w-6 cursor-pointer" (click)="showPassword()">
-                </span>
+                placeholder="Enter your email id" type="email" required [(ngModel)]="postObj.username" name="username">
             </div>
-        </div>
+            <div class="mt-4 flex flex-col">
+                <div class="font-bold mb-2">Password</div>
+                <div class="flex flex-row">
+                    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+                    placeholder="Enter your Password" type="password" required [type]="hide ? 'password' : 'text' "
+                    [(ngModel)]="postObj.password" name="password">
+                    <span *ngIf="hide" class="flex items-center">
+                        <img src="../../../assets/hidden.png" alt="hidden" class="w-6 cursor-pointer" (click)="showPassword()">
+                    </span>
+                    <span *ngIf="!hide" class="flex items-center">
+                        <img src="../../../assets/eye.png" alt="eye" class="w-6 cursor-pointer" (click)="showPassword()">
+                    </span>
+                </div>
+            </div>
+        </form>
         <div class="flex flex-row justify-between mt-4 md:w-4/5">
             <div class="flex flex-row">
                 <input type="checkbox">
@@ -67,7 +70,7 @@ background-color: #F9E6E6;padding: 5%;
             </div>
             <div class="text-purple-600 font-bold cursor-pointer">Forgot Password?</div>
         </div>
-        <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white">
+        <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="onSubmit()">
             Login</button>
             <div class="mt-2 flex">
                 <span class="font-bold cursor-default">Not registered yet?</span>

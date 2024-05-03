@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  version: '0.0.1',         
+  // register_service_url:"https://todoservice-7rzh.onrender.com",
+  // register_service_url:"https://plantoday-420711.el.r.appspot.com",
+  employee_service_url:"http://localhost:8080",
 };
 
 /*
