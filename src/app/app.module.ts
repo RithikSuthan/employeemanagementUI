@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
@@ -17,7 +16,6 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     LoginComponent,
     RegisterComponent,
     FooterComponent,
-    SidebarComponent,
     HomeComponent,
     SidenavComponent
   ],
