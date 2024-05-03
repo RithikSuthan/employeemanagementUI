@@ -9,13 +9,17 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    HomeComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
