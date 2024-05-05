@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { HeaderComponent } from './components/header/header.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
     RegisterComponent,
     FooterComponent,
     HomeComponent,
-    SidenavComponent
+    SidenavComponent,
+    HeaderComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 export class EndPoints {
     public static login='/login';
+    public static fetchEmployee='/fetch';
     // public static GET_PLANS='/getPlan';
     // public static UPDATE_STATUS='/updateStatus';
     // public static DELETE_TASK='/deleteTask';

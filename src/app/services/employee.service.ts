@@ -12,10 +12,14 @@ export class EmployeeService {
   constructor(private http:HttpClient) {
     this.employee_service_url=environment.employee_service_url;
    }
-
   login(postObj:any):Observable<any>
   {
       const url=this.employee_service_url+EndPoints.login;
       return this.http.post<any>(url,postObj);
+  }
+  fetchEmployees():Observable<any>
+  {
+    const url=this.employee_service_url+EndPoints.fetchEmployee;
+    return this.http.get<any>(url);
   }
 }

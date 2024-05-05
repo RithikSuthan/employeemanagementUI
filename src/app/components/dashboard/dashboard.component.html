@@ -1,0 +1,38 @@
+<div class="w-4/5 overflow-y-auto rounded-lg " style="height:fit-content;margin-left: 10%;z-index: 0;">
+    <div class="bg-gray-400 flex flex-row p-5 font-bold text-white justify-evenly" style="height: 8vh;">
+        <div style="width: 20%;">UUID</div>
+        <div style="width: 10%;">Image</div>
+        <div style="width: 10%;">Name</div>
+        <div style="width: 10%;">Phone Number</div>
+        <div style="width: 15%;">Email Id</div>
+        <div style="width: 15%;">Manager InCharge</div>
+    </div>
+    <div *ngFor="let item of dashboardData" class="flex flex-row justify-evenly">
+            <div class="bg-white" style="width: 20%;">
+                <!-- {
+                    "employeeName": "Srenivasan",
+                    "phoneNumber": "5464564554",
+                    "email": "srenivasan@gmail.com",
+                    "reportsTo": "",
+                    "profileImage": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320,q_50/lsci/db/PICTURES/CMS/319900/319953.png",
+                    "uuid": "258a9076-a1fd-4793-aa60-5119b5748626"
+                } -->
+                {{item['uuid']}}
+            </div>
+            <div style="width: 10%;">
+                <img src="{{item['profileImage']}}" class="w-10 h-10">
+            </div>
+            <div style="width: 10%;">
+                {{item['employeeName']}}
+            </div>
+            <div style="width: 10%;">
+                {{item['phoneNumber']}}
+            </div>
+            <div style="width: 15%;">
+                {{item['email']}}
+            </div>
+            <div style="width: 15%;">
+                {{item['reportsTo']?item['reportsTo']:'-' }}
+            </div>
+    </div>
+</div>
