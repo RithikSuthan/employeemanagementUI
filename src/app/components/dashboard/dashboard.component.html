@@ -1,38 +1,65 @@
-<div class="w-4/5 overflow-y-auto rounded-lg " style="height:fit-content;margin-left: 10%;z-index: 0;">
+<!-- <div class="w-4/5 overflow-y-auto rounded-lg " style="height:fit-content;margin-left: 10%;z-index: 0;">
     <div class="bg-gray-400 flex flex-row p-5 font-bold text-white justify-evenly" style="height: 8vh;">
-        <div style="width: 20%;">UUID</div>
-        <div style="width: 10%;">Image</div>
+        <div style="width: 10%;">Photo</div>
         <div style="width: 10%;">Name</div>
         <div style="width: 10%;">Phone Number</div>
         <div style="width: 15%;">Email Id</div>
         <div style="width: 15%;">Manager InCharge</div>
+        <div style="width: 20%;">Operation</div>
     </div>
-    <div *ngFor="let item of dashboardData" class="flex flex-row justify-evenly">
-            <div class="bg-white" style="width: 20%;">
-                <!-- {
-                    "employeeName": "Srenivasan",
-                    "phoneNumber": "5464564554",
-                    "email": "srenivasan@gmail.com",
-                    "reportsTo": "",
-                    "profileImage": "https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_320,q_50/lsci/db/PICTURES/CMS/319900/319953.png",
-                    "uuid": "258a9076-a1fd-4793-aa60-5119b5748626"
-                } -->
-                {{item['uuid']}}
+    <div *ngFor="let item of dashboardData" class="text-lg border-b-4 flex flex-row justify-evenly whitespace-normal">
+            <div style="width: 10%; "  class="items-center flex">
+                <img src="{{item['profileImage']}}" class="w-15 h-15">
             </div>
-            <div style="width: 10%;">
-                <img src="{{item['profileImage']}}" class="w-10 h-10">
-            </div>
-            <div style="width: 10%;">
+            <div style="width: 10%;" class="items-center flex font-bold">
                 {{item['employeeName']}}
             </div>
-            <div style="width: 10%;">
+            <div style="width: 10%;" class="items-center flex">
                 {{item['phoneNumber']}}
             </div>
-            <div style="width: 15%;">
+            <div style="width: 15%;" class="sm:w-full whitespace-normal items-center flex">
                 {{item['email']}}
             </div>
-            <div style="width: 15%;">
-                {{item['reportsTo']?item['reportsTo']:'-' }}
+            <div style="width: 15%;" class="items-center flex
+            font-bold text-gray-500
+            ">
+                Ramesh
+            </div>
+            <div style="width: 20%;" class="items-center flex"> 
+            Not yet decided
             </div>
     </div>
+</div> -->
+<div class="w-4/5 overflow-y-auto rounded-lg" style="height:fit-content;margin-left: 10%;z-index: 0;">
+    <div class="bg-gray-400 flex flex-row p-5 font-bold text-white justify-evenly" style="height: 8vh;">
+        <div class="w-1/6 whitespace-normal">Photo</div>
+        <div class="w-1/6 whitespace-normal">Name</div>
+        <div class="w-1/6 whitespace-normal">Phone Number</div>
+        <div class="w-1/4 whitespace-normal">Email Id</div>
+        <div class="w-1/4 whitespace-normal">Manager InCharge</div>
+        <div class="w-1/6 whitespace-normal">Operation</div>
+    </div>
+    <div *ngFor="let item of dashboardData" class="text-lg border-b-4 flex flex-row justify-evenly whitespace-normal">
+        <div class="w-1/6 items-center flex">
+            <img src="{{item['profileImage']}}" class="w-15 h-15">
+        </div>
+        <div class="w-1/6 items-center flex font-bold">
+            {{item['employeeName']}}
+        </div>
+        <div class="w-1/6 items-center flex">
+            {{item['phoneNumber']}}
+        </div>
+        <div class="w-1/4 items-center flex whitespace-normal">
+            {{item['email']}}
+        </div>
+        <div class="w-1/4 items-center flex font-bold text-gray-500">
+            Ramesh
+        </div>
+        <div class="w-1/6 items-center flex whitespace-normal"> 
+            Not yet decided
+        </div>
+    </div>
 </div>
+
+
+
