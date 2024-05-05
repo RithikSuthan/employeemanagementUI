@@ -74,10 +74,12 @@ addEmployee()
     this.employee.addEmployee(this.postObj).subscribe(
     (respose)=>{
         console.log(respose);
+        alert(respose['message']);
     },
     (error)=>
     {
       console.log(error);
+      alert(error['error']);
     }
     )
 }
