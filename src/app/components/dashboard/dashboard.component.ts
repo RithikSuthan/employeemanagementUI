@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   
   dashboardData=[];
   loadManagers=[];
+  roles=['Software Developer','Software tester','Dev OPS','Data Analyst','HR','Manager','Team Leader']
   popAddModle:any;
 
   postObj={
