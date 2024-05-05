@@ -99,7 +99,7 @@ background-color: #F9E6E6;padding: 5%;top:20%;position:absolute;margin-left: 20%
     <div class="font-bold mb-2">Job Designation</div>
     <select class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
             [(ngModel)]="postObj.position" required name="'position'">
-        <option value="" disabled>Select Reports To</option>
+        <option value="" disabled>Select Designation</option>
         <option *ngFor="let item of roles" [value]="item">{{item}}</option>
     </select>
 </div>
@@ -119,7 +119,7 @@ background-color: #F9E6E6;padding: 5%;top:20%;position:absolute;margin-left: 20%
     <select class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
             [(ngModel)]="postObj.reportsTo" required [attr.name]="'reportsTo'">
         <option value="" disabled>Select Reports To</option>
-        <option *ngFor="let item of loadManagers" [value]="item['employeeName']">{{item['employeeName']}}</option>
+        <option *ngFor="let item of loadManagers" [value]="item['uuid']">{{item['employeeName']}}</option>
     </select>
 </div>
 
