@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.fetchData();
     this.fetchManagers();
-    this.popAddModle=true;
+    this.popAddModle=false;
   }
   
   dashboardData=[];
