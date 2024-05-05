@@ -22,4 +22,14 @@ export class EmployeeService {
     const url=this.employee_service_url+EndPoints.fetchEmployee;
     return this.http.get<any>(url);
   }
+  addEmployee(postObj:any):Observable<any>
+  {
+    const url=this.employee_service_url+EndPoints.addEmployee;
+    return this.http.post<any>(url,postObj);
+  }
+  fetchManagers():Observable<any>
+  {
+    const url=this.employee_service_url+EndPoints.fetchManager;
+    return this.http.get<any>(url);
+  }
 }

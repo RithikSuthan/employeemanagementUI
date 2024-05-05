@@ -12,9 +12,38 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchData();
+    this.fetchManagers();
+    this.popAddModle=true;
   }
   
-  dashboardData=[]
+  dashboardData=[];
+  loadManagers=[];
+  popAddModle:any;
+
+  postObj={
+    employeeName:'',
+    email:'',
+    phoneNumber:'',
+    profileImage:'',
+    reportsTo:'',
+    position:''
+  }
+
+  fetchManagers()
+  {
+      this.employee.fetchManagers().subscribe
+      (
+        (response)=>
+          {
+            this.loadManagers=response;
+            console.log(response);
+          },
+          (error)=>
+            {
+              console.log(error);
+            }
+      )
+  }
   fetchData()
   {
       this.employee.fetchEmployees().subscribe
@@ -31,5 +60,24 @@ export class DashboardComponent implements OnInit {
             }
       )
   }
-
+addModel()
+{
+    this.popAddModle=!this.popAddModle;
+}
+close()
+{
+  this.popAddModle=!this.popAddModle;
+}
+addEmployee()
+{
+    this.employee.addEmployee(this.postObj).subscribe(
+    (respose)=>{
+        console.log(respose);
+    },
+    (error)=>
+    {
+      console.log(error);
+    }
+    )
+}
 }

@@ -31,6 +31,11 @@
     </div>
 </div> -->
 <div class="w-4/5 overflow-y-auto rounded-lg" style="height:fit-content;margin-left: 10%;z-index: 0;">
+    <div class="flex w-full justify-end">
+
+        <div class="bg-green-500 w-1/4 p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="addModel()">Add Employee</div>
+    </div>
+    
     <div class="bg-gray-400 flex flex-row p-5 font-bold text-white justify-evenly text-center text-xl" style="height: 8vh;">
         <div class="w-1/6 whitespace-normal">Photo</div>
         <div class="w-1/6 whitespace-normal">Name</div>
@@ -60,6 +65,67 @@
         </div>
     </div>
 </div>
+
+<div style="width: 60%;height: fit-content;
+background-color: #F9E6E6;padding: 5%;top:20%;position:absolute;margin-left: 20%;
+"   *ngIf="popAddModle" class="rounded-lg">
+
+<div class="flex flex-row w-full">
+    <div class="w-3/4 flex justify-end font-bold text-xl cursor-default">Add Employee</div>
+    <div class="w-1/4 flex justify-end text-xl"><span class="cursor-pointer" (click)="close()">X</span></div>
+</div>
+
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Name</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Name" type="text" required [(ngModel)]="postObj.employeeName" name="employeeName">
+</div>
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Email</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Email" type="email" required [(ngModel)]="postObj.email" name="email">
+</div>
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Mobile</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Mobile" type="tel" required [(ngModel)]="postObj.phoneNumber" name="phoneNumber">
+</div>
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Job Designation</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Positon" type="text" required [(ngModel)]="postObj.position" name="position">
+</div>
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Image Link</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Image Link" type="text" required [(ngModel)]="postObj.profileImage" name="profileImage">
+</div>
+<!-- <div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Reports To</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Reports To" type="text" required [(ngModel)]="postObj.reportsTo" name="reportsTo">
+</div> -->
+
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Reports To</div>
+    <select class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+            [(ngModel)]="postObj.reportsTo" required [attr.name]="'reportsTo'">
+        <option value="" disabled>Select Reports To</option>
+        <option *ngFor="let item of loadManagers" [value]="item['employeeName']">{{item['employeeName']}}</option>
+    </select>
+</div>
+
+
+
+
+
+<div class=" mt-4 flex w-4/5 justify-center">
+    <div class="bg-green-500  md:w-2/4 w-1/4 p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="addEmployee()">Add Employee</div>
+</div>
+
+</div>
+
+
 
 
 
