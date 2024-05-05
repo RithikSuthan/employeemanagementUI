@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   postObj:any=
   {
-    username:'',
+    userName:'',
     password:''
   }
 
