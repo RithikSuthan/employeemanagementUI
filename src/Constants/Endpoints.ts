@@ -5,4 +5,5 @@ export class EndPoints {
     public static fetchManager="/fetchManagers";
     public static deleteEmployee='/delete';
     public static findEmployee='/find';
+    public static editEmployee='/update';
 }

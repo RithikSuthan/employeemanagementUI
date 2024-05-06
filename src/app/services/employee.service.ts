@@ -43,4 +43,9 @@ export class EmployeeService {
     const url = `${this.employee_service_url}${EndPoints.findEmployee}?uuid=${uuidEmployee}`;
     return this.http.get<any>(url);
   }
+  editEmployee(editObj:any):Observable<any>
+  {
+      const url=this.employee_service_url+EndPoints.editEmployee;
+      return this.http.patch<any>(url,editObj);
+  }
 }

@@ -8,18 +8,11 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private employee:EmployeeService) { }
-
-  ngOnInit(): void {
-    this.fetchData();
-    this.fetchManagers();
-    this.popAddModle=false;
-  }
-  
   dashboardData=[];
   loadManagers=[];
   roles=['Software Developer','Software tester','Dev OPS','Data Analyst','HR','Manager','Team Leader']
   popAddModle:any;
+  popEditModel:any;
 
   postObj={
     employeeName:'',
@@ -29,7 +22,24 @@ export class DashboardComponent implements OnInit {
     reportsTo:'',
     position:''
   }
+  editObj={
+    employeeName:'',
+    email:'',
+    phoneNumber:'',
+    profileImage:'',
+    reportsTo:'',
+    position:''
+  }
 
+  constructor(private employee:EmployeeService) { }
+
+  ngOnInit(): void {
+    this.fetchData();
+    this.fetchManagers();
+    this.popAddModle=false;
+    this.popEditModel=false;
+  }
+  
   fetchManagers()
   {
       this.employee.fetchManagers().subscribe
@@ -100,17 +110,38 @@ delete(uuid:any)
   )
 
 }
+
+closeEdit()
+{
+  this.popEditModel=!this.popEditModel;
+}
 editFetchEmployee(uuid:any)
 {
     this.employee.editFetchEmployee(uuid).subscribe(
       (response)=>
         {
           console.log(response);
+          this.popEditModel=true;
+          this.editObj=response;
+          this.ngOnInit();
         },
         (error)=>
           {
             console.log(error);
           }
     )
+}
+editEmployee()
+{
+    this.employee.editEmployee(this.editObj).subscribe(
+      (response)=>
+        {
+            alert(response['message']);
+        },
+        (error)=>
+          {
+              alert(error['error']);
+          }
+    ) 
 }
 }
