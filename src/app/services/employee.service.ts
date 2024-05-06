@@ -19,7 +19,9 @@ export class EmployeeService {
   }
   fetchEmployees():Observable<any>
   {
-    const url=this.employee_service_url+EndPoints.fetchEmployee;
+    const url = `${this.employee_service_url}${EndPoints.fetchEmployee}?company=${localStorage.getItem("company")}&creator=${localStorage.getItem("name")}`;
+
+    // const url=this.employee_service_url+EndPoints.fetchEmployee;
     return this.http.get<any>(url);
   }
   addEmployee(postObj:any):Observable<any>
@@ -29,7 +31,8 @@ export class EmployeeService {
   }
   fetchManagers():Observable<any>
   {
-    const url=this.employee_service_url+EndPoints.fetchManager;
+    const url = `${this.employee_service_url}${EndPoints.fetchManager}?company=${localStorage.getItem("company")}&creator=${localStorage.getItem("name")}`;
+
     return this.http.get<any>(url);
   }
   deleteEmployee(uuidEmployee:any):Observable<any>

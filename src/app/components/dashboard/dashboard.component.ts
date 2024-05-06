@@ -89,6 +89,10 @@ addEmployee()
     (respose)=>{
         console.log(respose);
         alert(respose['message']);
+        setTimeout(()=>
+          {
+              this.ngOnInit();
+          },5000)
     },
     (error)=>
     {
@@ -104,7 +108,10 @@ delete(uuid:any)
       {
           console.log(respose);
           alert(respose['message']);
-          this.ngOnInit();
+          setTimeout(()=>
+            {
+                this.ngOnInit();
+            },5000)
       },
       (error)=>
         {
@@ -141,7 +148,10 @@ editEmployee()
       (response)=>
         {
             alert(response['message']);
-            this.ngOnInit();
+              setTimeout(()=>
+  {
+      this.ngOnInit();
+  },5000)
         },
         (error)=>
           {
