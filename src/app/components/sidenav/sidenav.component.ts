@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidenav',
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
 
+  @Input()employeeName:any;
   constructor(private router:Router) { }
 
   ngOnInit(): void {

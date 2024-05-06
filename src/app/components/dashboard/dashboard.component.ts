@@ -20,7 +20,9 @@ export class DashboardComponent implements OnInit {
     phoneNumber:'',
     profileImage:'',
     reportsTo:'',
-    position:''
+    position:'',
+    company:localStorage.getItem('company'),
+    creator:localStorage.getItem('name')
   }
   editObj={
     employeeName:'',
@@ -28,7 +30,9 @@ export class DashboardComponent implements OnInit {
     phoneNumber:'',
     profileImage:'',
     reportsTo:'',
-    position:''
+    position:'',
+    company:localStorage.getItem('company'),
+    creator:localStorage.getItem('name')
   }
 
   constructor(private employee:EmployeeService) { }

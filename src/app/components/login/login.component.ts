@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   this.hide=true;
+  localStorage.removeItem('userName');
+  localStorage.removeItem('company');
   }
   showPassword()
   {
@@ -40,12 +42,17 @@ export class LoginComponent implements OnInit {
         console.log(response);
         if (response.message =="Login Successful")
           {
+            alert(response['message']);
+            localStorage.setItem('userName',response['userName']);
+            localStorage.setItem('name',response['name']);
+            localStorage.setItem('company',response['company']);
             this.router.navigateByUrl("/home");
           }
       },
       (error)=>
         {
           console.log(error);
+          alert(error['error']);
         }
     )
   }
