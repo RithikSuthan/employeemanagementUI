@@ -48,4 +48,9 @@ export class EmployeeService {
       const url=this.employee_service_url+EndPoints.editEmployee;
       return this.http.patch<any>(url,editObj);
   }
+  registerEmployee(postObj:any):Observable<any>
+  {
+      const url=this.employee_service_url+EndPoints.registerEmployee;
+      return this.http.put<any>(url,postObj);
+  }
 }

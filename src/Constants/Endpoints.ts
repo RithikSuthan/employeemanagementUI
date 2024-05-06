@@ -6,4 +6,5 @@ export class EndPoints {
     public static deleteEmployee='/delete';
     public static findEmployee='/find';
     public static editEmployee='/update';
+    public static registerEmployee="/register";
 }
