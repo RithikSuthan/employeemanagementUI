@@ -62,8 +62,10 @@
         <div class="w-1/4 items-center flex font-bold text-gray-500">
             {{item['manager']?item['manager']:'NA'}}
         </div>
-        <div class="w-1/6 items-center flex whitespace-normal"> 
-            Not yet decided
+        <div class="w-1/6 items-center flex flex-row md:flex-col
+         whitespace-normal justify-around cursor-pointer"> 
+                <div class="bg-pink-400 w-full p-2 text-center text-white">Edit</div>
+                <div class="bg-red-600 w-full p-2 text-center text-white" (click)="delete(item['uuid'])">Delete</div>    
         </div>
     </div>
 </div>

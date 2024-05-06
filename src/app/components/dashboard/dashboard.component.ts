@@ -83,4 +83,21 @@ addEmployee()
     }
     )
 }
+delete(uuid:any)
+{
+  this.employee.deleteEmployee(uuid).subscribe(
+    (respose)=>
+      {
+          console.log(respose);
+          alert(respose['message']);
+          this.ngOnInit();
+      },
+      (error)=>
+        {
+            console.log(error);
+            alert(error['error']);
+        }
+  )
+
+}
 }

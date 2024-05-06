@@ -32,4 +32,12 @@ export class EmployeeService {
     const url=this.employee_service_url+EndPoints.fetchManager;
     return this.http.get<any>(url);
   }
+  deleteEmployee(uuidEmployee:any):Observable<any>
+  {
+    let postObj={
+      uuid:uuidEmployee
+    }
+    const url = this.employee_service_url+EndPoints.deleteEmployee;
+    return this.http.post<any>(url,postObj);
+  }
 }
