@@ -46,7 +46,9 @@
     </div>
     <div *ngFor="let item of dashboardData" class="text-lg border-b-4 flex flex-row justify-evenly whitespace-normal">
         <div class="w-1/6 items-center flex">
-            <img src="{{item['profileImage']}}" class="w-15 h-15">
+             <img [src]="item['profileImage'] ? item['profileImage']: '../../../../../assets/noPhoto.jpg'" 
+             alt="Photo Unavailable" class="w-15 h-15">
+
         </div>
         <div class="w-1/6 items-center flex font-bold">
             {{item['employeeName']}}
