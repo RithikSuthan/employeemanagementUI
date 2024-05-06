@@ -34,10 +34,13 @@ export class EmployeeService {
   }
   deleteEmployee(uuidEmployee:any):Observable<any>
   {
-    let postObj={
-      uuid:uuidEmployee
-    }
-    const url = this.employee_service_url+EndPoints.deleteEmployee;
-    return this.http.post<any>(url,postObj);
+
+    const url=`${this.employee_service_url}${EndPoints.deleteEmployee}?uuid=${uuidEmployee}`
+    return this.http.delete<any>(url);
+  }
+
+  editFetchEmployee(uuidEmployee: any): Observable<any> {
+    const url = `${this.employee_service_url}${EndPoints.findEmployee}?uuid=${uuidEmployee}`;
+    return this.http.get<any>(url);
   }
 }

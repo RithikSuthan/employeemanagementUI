@@ -64,7 +64,7 @@
         </div>
         <div class="w-1/6 items-center flex flex-row md:flex-col
          whitespace-normal justify-around cursor-pointer"> 
-                <div class="bg-pink-400 w-full p-2 text-center text-white">Edit</div>
+                <div class="bg-pink-400 w-full p-2 text-center text-white" (click)="editFetchEmployee(item['uuid'])">Edit</div>
                 <div class="bg-red-600 w-full p-2 text-center text-white" (click)="delete(item['uuid'])">Delete</div>    
         </div>
     </div>

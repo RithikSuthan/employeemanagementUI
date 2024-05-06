@@ -100,4 +100,17 @@ delete(uuid:any)
   )
 
 }
+editFetchEmployee(uuid:any)
+{
+    this.employee.editFetchEmployee(uuid).subscribe(
+      (response)=>
+        {
+          console.log(response);
+        },
+        (error)=>
+          {
+            console.log(error);
+          }
+    )
+}
 }
