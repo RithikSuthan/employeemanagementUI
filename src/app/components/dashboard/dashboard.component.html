@@ -39,6 +39,7 @@
     <div class="bg-gray-400 flex flex-row p-5 font-bold text-white justify-evenly text-center text-xl" style="height: 8vh;">
         <div class="w-1/6 whitespace-normal">Photo</div>
         <div class="w-1/6 whitespace-normal">Name</div>
+        <div class="w-1/6 whitespace-normal">Position</div>
         <div class="w-1/6 whitespace-normal">Phone Number</div>
         <div class="w-1/4 whitespace-normal">Email Id</div>
         <div class="w-1/4 whitespace-normal">Manager InCharge</div>
@@ -52,6 +53,9 @@
         </div>
         <div class="w-1/6 items-center flex font-bold">
             {{item['employeeName']}}
+        </div>
+        <div class="w-1/6 items-center flex">
+            {{item['position'] ? item['position'] :'NA'}}
         </div>
         <div class="w-1/6 items-center flex">
             {{item['phoneNumber']}}

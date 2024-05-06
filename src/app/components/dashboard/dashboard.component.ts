@@ -123,7 +123,7 @@ editFetchEmployee(uuid:any)
           console.log(response);
           this.popEditModel=true;
           this.editObj=response;
-          this.ngOnInit();
+          
         },
         (error)=>
           {
@@ -137,6 +137,7 @@ editEmployee()
       (response)=>
         {
             alert(response['message']);
+            this.ngOnInit();
         },
         (error)=>
           {
