@@ -33,46 +33,58 @@
 <div class="w-4/5 overflow-y-auto rounded-lg" style="height:fit-content;margin-left: 10%;z-index: 0;">
     <div class="flex w-full justify-end">
 
-        <div class="bg-green-500 w-1/4 p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="addModel()">Add Employee</div>
+        <div class="bg-green-500 md:w-1/4 p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center w-fit" (click)="addModel()">Add Employee</div>
+    </div>
+
+    <div class="flex flex-col w-full">
+        <!-- Table Headers (only visible on larger screens) -->
+        <div class="hidden md:flex bg-gray-400 flex-row p-5 font-bold text-white justify-evenly text-center text-xl">
+            <div class="w-1/6 whitespace-normal">Photo</div>
+            <div class="w-1/6 whitespace-normal">Name</div>
+            <div class="w-1/6 whitespace-normal">Position</div>
+            <div class="w-1/6 whitespace-normal">Phone Number</div>
+            <div class="w-1/4 whitespace-normal">Email Id</div>
+            <div class="w-1/4 whitespace-normal">Manager InCharge</div>
+            <div class="w-1/6 whitespace-normal">Operation</div>
+        </div>
+        
+        <!-- Table Rows -->
+        <ng-container *ngFor="let item of dashboardData">
+            <div class="text-lg border-b-4 flex flex-col md:flex-row justify-between whitespace-normal p-4">
+                <div class="w-full md:w-1/6 items-center flex justify-center">
+                    <img [src]="item['profileImage'] ? item['profileImage'] : '../../../../../assets/noPhoto.jpg'" alt="Photo Unavailable" class="w-15 h-15">
+                </div>
+                <div class="w-full md:w-1/6 items-center flex font-bold text-center justify-center">
+                    {{item['employeeName']}}
+                </div>
+                <div class="w-full md:w-1/6 items-center flex text-center justify-center">
+                    {{item['position'] ? item['position'] : 'NA'}}
+                </div>
+                <div class="w-full md:w-1/6 items-center flex text-center justify-center">
+                    {{item['phoneNumber']}}
+                </div>
+                <div class="w-full md:w-1/4 items-center flex whitespace-normal text-center justify-center">
+                    {{item['email']}}
+                </div>
+                <div class="w-full md:w-1/4 items-center flex font-bold text-gray-500 text-center justify-center">
+                    {{item['manager'] ? item['manager'] : 'NA'}}
+                </div>
+                <div class="w-full md:w-1/6 items-center flex flex-row md:flex-col whitespace-normal justify-around cursor-pointer text-center">
+                    <div class="bg-pink-400 w-full p-2 text-center text-white" (click)="editFetchEmployee(item['uuid'])">Edit</div>
+                    <div class="bg-red-600 w-full p-2 text-center text-white" (click)="delete(item['uuid'])">Delete</div>    
+                </div>
+            </div>
+        </ng-container>
     </div>
     
-    <div class="bg-gray-400 flex flex-row p-5 font-bold text-white justify-evenly text-center text-xl" style="height: 8vh;">
-        <div class="w-1/6 whitespace-normal">Photo</div>
-        <div class="w-1/6 whitespace-normal">Name</div>
-        <div class="w-1/6 whitespace-normal">Position</div>
-        <div class="w-1/6 whitespace-normal">Phone Number</div>
-        <div class="w-1/4 whitespace-normal">Email Id</div>
-        <div class="w-1/4 whitespace-normal">Manager InCharge</div>
-        <div class="w-1/6 whitespace-normal">Operation</div>
-    </div>
-    <div *ngFor="let item of dashboardData" class="text-lg border-b-4 flex flex-row justify-evenly whitespace-normal">
-        <div class="w-1/6 items-center flex">
-             <img [src]="item['profileImage'] ? item['profileImage']: '../../../../../assets/noPhoto.jpg'" 
-             alt="Photo Unavailable" class="w-15 h-15">
+    
+    
 
-        </div>
-        <div class="w-1/6 items-center flex font-bold">
-            {{item['employeeName']}}
-        </div>
-        <div class="w-1/6 items-center flex">
-            {{item['position'] ? item['position'] :'NA'}}
-        </div>
-        <div class="w-1/6 items-center flex">
-            {{item['phoneNumber']}}
-        </div>
-        <div class="w-1/4 items-center flex whitespace-normal">
-            {{item['email']}}
-        </div>
-        <div class="w-1/4 items-center flex font-bold text-gray-500">
-            {{item['manager']?item['manager']:'NA'}}
-        </div>
-        <div class="w-1/6 items-center flex flex-row md:flex-col
-         whitespace-normal justify-around cursor-pointer"> 
-                <div class="bg-pink-400 w-full p-2 text-center text-white" (click)="editFetchEmployee(item['uuid'])">Edit</div>
-                <div class="bg-red-600 w-full p-2 text-center text-white" (click)="delete(item['uuid'])">Delete</div>    
-        </div>
-    </div>
+    
 </div>
+
+
+
 
 <div style="width: 60%;height: fit-content;
 background-color: #F9E6E6;padding: 5%;top:20%;position:absolute;margin-left: 20%;
