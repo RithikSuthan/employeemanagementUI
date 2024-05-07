@@ -21,6 +21,8 @@ module.exports = {
       width:
       {
         '90':'90%',
+        '60':'60%',
+        '40':'40%',
         'fit-content': 'fit-content',
       }
     },

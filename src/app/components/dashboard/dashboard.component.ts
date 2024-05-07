@@ -78,10 +78,12 @@ export class DashboardComponent implements OnInit {
 addModel()
 {
     this.popAddModle=!this.popAddModle;
+    document.body.style.overflow='hidden';
 }
 close()
 {
   this.popAddModle=!this.popAddModle;
+  document.body.style.overflow='auto';
 }
 addEmployee()
 {

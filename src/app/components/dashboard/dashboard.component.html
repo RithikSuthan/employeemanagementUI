@@ -86,12 +86,12 @@
 
 
 
-<div style="background-color: #F9E6E6;" *ngIf="popAddModle"
- class=" md:w-3/5 w-90 rounded-lg top-1/5 md:ml-1/5 ml-1/12 p-1/12 absolute h-fit-content">
+<div style="background-color: #F9E6E6;top:8%" *ngIf="popAddModle"
+ class=" md:w-3/5 w-90 rounded-lg top-1/5 md:ml-1/5 ml-1/12 p-1/12 fixed md:text-2xl h-4/5 overflow-y-auto">
 
 <div class="flex flex-row w-full">
-    <div class="w-3/4 flex justify-end font-bold text-xl cursor-default">Add Employee</div>
-    <div class="w-1/4 flex justify-end text-xl"><span class="cursor-pointer" (click)="close()">X</span></div>
+    <div class="md:w-2/4 w-60 flex justify-end font-bold cursor-default">Add Employee</div>
+    <div class="md:w-2/4 w-40 flex justify-end text-4xl"><span class="cursor-pointer" (click)="close()">X</span></div>
 </div>
 
 <div class="mt-4 flex flex-col">
