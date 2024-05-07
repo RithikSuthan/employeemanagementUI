@@ -19,6 +19,7 @@ export class SidenavComponent implements OnInit {
   }
   signOut()
   {
+    document.body.style.overflow="auto";
     this.router.navigateByUrl("/");
   }
   onMouseEnter()
@@ -28,6 +29,7 @@ export class SidenavComponent implements OnInit {
     if(ele)
     {
         ele.style.display="block";
+        document.body.style.overflow="hidden";
     }
   }
   onMouseLeave()
@@ -37,6 +39,7 @@ export class SidenavComponent implements OnInit {
     if(ele)
     {
         ele.style.display="none";
+        document.body.style.overflow="auto";
     }
   }
 }
