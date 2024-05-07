@@ -36,9 +36,9 @@
         <div class="bg-green-500 md:w-1/4 p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center w-fit" (click)="addModel()">Add Employee</div>
     </div>
 
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full md:text-2xl text-l">
         <!-- Table Headers (only visible on larger screens) -->
-        <div class="hidden md:flex bg-gray-400 flex-row p-5 font-bold text-white justify-evenly text-center text-xl">
+        <div class="hidden md:flex bg-gray-400 flex-row p-5 font-bold text-white justify-evenly text-center">
             <div class="w-1/6 whitespace-normal">Photo</div>
             <div class="w-1/6 whitespace-normal">Name</div>
             <div class="w-1/6 whitespace-normal">Position</div>
@@ -50,7 +50,7 @@
         
         <!-- Table Rows -->
         <ng-container *ngFor="let item of dashboardData">
-            <div class="text-lg border-b-4 flex flex-col md:flex-row justify-between whitespace-normal p-4">
+            <div class="border-b-4 flex flex-col md:flex-row justify-between whitespace-normal p-4">
                 <div class="w-full md:w-1/6 items-center flex justify-center">
                     <img [src]="item['profileImage'] ? item['profileImage'] : '../../../../../assets/noPhoto.jpg'" alt="Photo Unavailable" class="w-15 h-15">
                 </div>
@@ -158,13 +158,13 @@
 
 
 
-<div style="width: 60%;height: fit-content;
-background-color: #F9E6E6;padding: 5%;top:20%;position:absolute;margin-left: 20%;
-"   *ngIf="popEditModel" class="rounded-lg">
+<div style="background-color: #F9E6E6;top:8%" *ngIf="popEditModel"
+ class=" md:w-3/5 w-90 rounded-lg top-1/5 md:ml-1/5 ml-1/12 p-1/12 fixed md:text-2xl h-4/5 overflow-y-auto">
+
 
 <div class="flex flex-row w-full">
-    <div class="w-3/4 flex justify-end font-bold text-xl cursor-default">Edit Employee</div>
-    <div class="w-1/4 flex justify-end text-xl"><span class="cursor-pointer" (click)="closeEdit()">X</span></div>
+    <div class="md:w-2/4 w-60 flex justify-end font-bold cursor-default">Edit Employee</div>
+    <div class="md:w-2/4 w-40 flex justify-end text-4xl"><span class="cursor-pointer" (click)="closeEdit()">X</span></div>
 </div>
 
 <div class="mt-4 flex flex-col">
@@ -219,8 +219,8 @@ background-color: #F9E6E6;padding: 5%;top:20%;position:absolute;margin-left: 20%
 
 
 
-<div class=" mt-4 flex w-4/5 justify-center">
-    <div class="bg-green-500  md:w-2/4 w-1/4 p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="editEmployee()">Edit Employee</div>
+<div class=" mt-4 flex md:w-4/5 w-full justify-center">
+    <div class="bg-green-500  md:w-2/4 w-fit-content p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="editEmployee()">Edit Employee</div>
 </div>
 
 </div>

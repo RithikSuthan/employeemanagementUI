@@ -127,6 +127,7 @@ delete(uuid:any)
 closeEdit()
 {
   this.popEditModel=!this.popEditModel;
+  document.body.style.overflow='auto';
 }
 editFetchEmployee(uuid:any)
 {
@@ -135,6 +136,7 @@ editFetchEmployee(uuid:any)
         {
           console.log(response);
           this.popEditModel=true;
+          document.body.style.overflow="hidden";
           this.editObj=response;
           
         },
