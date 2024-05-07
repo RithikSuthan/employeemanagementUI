@@ -86,9 +86,8 @@
 
 
 
-<div style="width: 60%;height: fit-content;
-background-color: #F9E6E6;padding: 5%;top:20%;position:absolute;margin-left: 20%;
-"   *ngIf="popAddModle" class="rounded-lg">
+<div style="background-color: #F9E6E6;" *ngIf="popAddModle"
+ class=" md:w-3/5 w-90 rounded-lg top-1/5 md:ml-1/5 ml-1/12 p-1/12 absolute h-fit-content">
 
 <div class="flex flex-row w-full">
     <div class="w-3/4 flex justify-end font-bold text-xl cursor-default">Add Employee</div>
@@ -117,12 +116,13 @@ background-color: #F9E6E6;padding: 5%;top:20%;position:absolute;margin-left: 20%
 </div> -->
 <div class="mt-4 flex flex-col">
     <div class="font-bold mb-2">Job Designation</div>
-    <select class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    <select class="md:w-4/5  w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
             [(ngModel)]="postObj.position" required name="'position'">
         <option value="" disabled>Select Designation</option>
         <option *ngFor="let item of roles" [value]="item">{{item}}</option>
     </select>
 </div>
+
 <div class="mt-4 flex flex-col">
     <div class="font-bold mb-2">Image Link</div>
     <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
@@ -147,8 +147,8 @@ background-color: #F9E6E6;padding: 5%;top:20%;position:absolute;margin-left: 20%
 
 
 
-<div class=" mt-4 flex w-4/5 justify-center">
-    <div class="bg-green-500  md:w-2/4 w-1/4 p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="addEmployee()">Add Employee</div>
+<div class=" mt-4 flex md:w-4/5 w-full justify-center">
+    <div class="bg-green-500  md:w-2/4 w-fit-content p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="addEmployee()">Add Employee</div>
 </div>
 
 </div>

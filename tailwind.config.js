@@ -5,7 +5,25 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      inset:
+      {
+        '1/5':'20%',
+      },
+      spacing: {
+        '1/5': '20%',
+        '1/12':'5%'
+
+      },
+      height: {
+        'fit-content': 'fit-content',
+      },
+      width:
+      {
+        '90':'90%',
+        'fit-content': 'fit-content',
+      }
+    },
   },
   variants: {
     extend: {},
