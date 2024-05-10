@@ -1,0 +1,228 @@
+<!-- <div class="w-4/5 overflow-y-auto rounded-lg " style="height:fit-content;margin-left: 10%;z-index: 0;">
+    <div class="bg-gray-400 flex flex-row p-5 font-bold text-white justify-evenly" style="height: 8vh;">
+        <div style="width: 10%;">Photo</div>
+        <div style="width: 10%;">Name</div>
+        <div style="width: 10%;">Phone Number</div>
+        <div style="width: 15%;">Email Id</div>
+        <div style="width: 15%;">Manager InCharge</div>
+        <div style="width: 20%;">Operation</div>
+    </div>
+    <div *ngFor="let item of dashboardData" class="text-lg border-b-4 flex flex-row justify-evenly whitespace-normal">
+            <div style="width: 10%; "  class="items-center flex">
+                <img src="{{item['profileImage']}}" class="w-15 h-15">
+            </div>
+            <div style="width: 10%;" class="items-center flex font-bold">
+                {{item['employeeName']}}
+            </div>
+            <div style="width: 10%;" class="items-center flex">
+                {{item['phoneNumber']}}
+            </div>
+            <div style="width: 15%;" class="sm:w-full whitespace-normal items-center flex">
+                {{item['email']}}
+            </div>
+            <div style="width: 15%;" class="items-center flex
+            font-bold text-gray-500
+            ">
+                Ramesh
+            </div>
+            <div style="width: 20%;" class="items-center flex"> 
+            Not yet decided
+            </div>
+    </div>
+</div> -->
+<div class="w-4/5 overflow-y-auto rounded-lg" style="height:fit-content;margin-left: 10%;z-index: 0;">
+    <div class="flex w-full justify-end">
+
+        <div class="bg-green-500 md:w-1/4 p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center w-fit" (click)="addModel()">Add Employee</div>
+    </div>
+
+    <div class="flex flex-col w-full md:text-2xl text-l">
+        <!-- Table Headers (only visible on larger screens) -->
+        <div class="hidden md:flex bg-gray-400 flex-row p-5 font-bold text-white justify-evenly text-center">
+            <div class="w-1/6 whitespace-normal">Photo</div>
+            <div class="w-1/6 whitespace-normal">Name</div>
+            <div class="w-1/6 whitespace-normal">Position</div>
+            <div class="w-1/6 whitespace-normal">Phone Number</div>
+            <div class="w-1/4 whitespace-normal">Email Id</div>
+            <div class="w-1/4 whitespace-normal">Manager InCharge</div>
+            <div class="w-1/6 whitespace-normal">Operation</div>
+        </div>
+        
+        <!-- Table Rows -->
+        <ng-container *ngFor="let item of dashboardData">
+            <div class="border-b-4 flex flex-col md:flex-row justify-between whitespace-normal p-4">
+                <div class="w-full md:w-1/6 items-center flex justify-center">
+                    <img [src]="item['profileImage'] ? item['profileImage'] : '../../../../../assets/noPhoto.jpg'" alt="Photo Unavailable" class="w-15 h-15">
+                </div>
+                <div class="w-full md:w-1/6 items-center flex font-bold text-center justify-center">
+                    {{item['employeeName']}}
+                </div>
+                <div class="w-full md:w-1/6 items-center flex text-center justify-center">
+                    {{item['position'] ? item['position'] : 'NA'}}
+                </div>
+                <div class="w-full md:w-1/6 items-center flex text-center justify-center">
+                    {{item['phoneNumber']}}
+                </div>
+                <div class="w-full md:w-1/4 items-center flex whitespace-normal text-center justify-center">
+                    {{item['email']}}
+                </div>
+                <div class="w-full md:w-1/4 items-center flex font-bold text-gray-500 text-center justify-center">
+                    {{item['manager'] ? item['manager'] : 'NA'}}
+                </div>
+                <div class="w-full md:w-1/6 items-center flex flex-row md:flex-col whitespace-normal justify-around cursor-pointer text-center">
+                    <div class="bg-pink-400 w-full p-2 text-center text-white" (click)="editFetchEmployee(item['uuid'])">Edit</div>
+                    <div class="bg-red-600 w-full p-2 text-center text-white" (click)="delete(item['uuid'])">Delete</div>    
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    
+    
+    
+
+    
+</div>
+
+
+
+
+<div style="background-color: #F9E6E6;top:8%" *ngIf="popAddModle"
+ class=" md:w-3/5 w-90 rounded-lg top-1/5 md:ml-1/5 ml-1/12 p-1/12 fixed md:text-2xl h-4/5 overflow-y-auto">
+
+<div class="flex flex-row w-full">
+    <div class="md:w-2/4 w-60 flex justify-end font-bold cursor-default">Add Employee</div>
+    <div class="md:w-2/4 w-40 flex justify-end text-4xl"><span class="cursor-pointer" (click)="close()">X</span></div>
+</div>
+
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Name</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Name" type="text" required [(ngModel)]="postObj.employeeName" name="employeeName">
+</div>
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Email</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Email" type="email" required [(ngModel)]="postObj.email" name="email">
+</div>
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Mobile</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Mobile" type="tel" required [(ngModel)]="postObj.phoneNumber" name="phoneNumber">
+</div>
+<!-- <div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Job Designation</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Positon" type="text" required [(ngModel)]="postObj.position" name="position">
+</div> -->
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Job Designation</div>
+    <select class="md:w-4/5  w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+            [(ngModel)]="postObj.position" required name="'position'">
+        <option value="" disabled>Select Designation</option>
+        <option *ngFor="let item of roles" [value]="item">{{item}}</option>
+    </select>
+</div>
+
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Image Link</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Image Link" type="text" required [(ngModel)]="postObj.profileImage" name="profileImage">
+</div>
+<!-- <div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Reports To</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Reports To" type="text" required [(ngModel)]="postObj.reportsTo" name="reportsTo">
+</div> -->
+
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Reports To</div>
+    <select class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+            [(ngModel)]="postObj.reportsTo" required [attr.name]="'reportsTo'">
+        <option value="" disabled>Select Reports To</option>
+        <option *ngFor="let item of loadManagers" [value]="item['uuid']">{{item['employeeName']}}</option>
+    </select>
+</div>
+
+
+
+
+
+<div class=" mt-4 flex md:w-4/5 w-full justify-center">
+    <div class="bg-green-500  md:w-2/4 w-fit-content p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="addEmployee()">Add Employee</div>
+</div>
+
+</div>
+
+
+
+
+
+
+<div style="background-color: #F9E6E6;top:8%" *ngIf="popEditModel"
+ class=" md:w-3/5 w-90 rounded-lg top-1/5 md:ml-1/5 ml-1/12 p-1/12 fixed md:text-2xl h-4/5 overflow-y-auto">
+
+
+<div class="flex flex-row w-full">
+    <div class="md:w-2/4 w-60 flex justify-end font-bold cursor-default">Edit Employee</div>
+    <div class="md:w-2/4 w-40 flex justify-end text-4xl"><span class="cursor-pointer" (click)="closeEdit()">X</span></div>
+</div>
+
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Name</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Name" type="text" required [(ngModel)]="editObj.employeeName" name="employeeName">
+</div>
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Email</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Email" type="email" required [(ngModel)]="editObj.email" name="email">
+</div>
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Mobile</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Mobile" type="tel" required [(ngModel)]="editObj.phoneNumber" name="phoneNumber">
+</div>
+<!-- <div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Job Designation</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Positon" type="text" required [(ngModel)]="postObj.position" name="position">
+</div> -->
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Job Designation</div>
+    <select class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+            [(ngModel)]="editObj.position" required name="'position'">
+        <option value="" disabled>Select Designation</option>
+        <option *ngFor="let item of roles" [value]="item">{{item}}</option>
+    </select>
+</div>
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Image Link</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Image Link" type="text" required [(ngModel)]="editObj.profileImage" name="profileImage">
+</div>
+<!-- <div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Reports To</div>
+    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Reports To" type="text" required [(ngModel)]="postObj.reportsTo" name="reportsTo">
+</div> -->
+
+<div class="mt-4 flex flex-col">
+    <div class="font-bold mb-2">Reports To</div>
+    <select class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+            [(ngModel)]="editObj.reportsTo" required [attr.name]="'reportsTo'">
+        <option value="" disabled>Select Reports To</option>
+        <option *ngFor="let item of loadManagers" [value]="item['uuid']">{{item['employeeName']}}</option>
+    </select>
+</div>
+
+
+
+
+
+<div class=" mt-4 flex md:w-4/5 w-full justify-center">
+    <div class="bg-green-500  md:w-2/4 w-fit-content p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="editEmployee()">Edit Employee</div>
+</div>
+
+</div>
+
+

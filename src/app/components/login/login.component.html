@@ -1,0 +1,89 @@
+<div style="margin: 10%;width: 80%;height: fit-content;
+background-color: #F9E6E6;padding: 5%;
+" >
+<div class="flex flex-row justify-between">
+    <div style="color: #474BCA" class="font-semibold text-xl">Staff Sync</div>
+        <div class="p-2 pl-5  h-auto flex rounded-md w-24" style="background-color: #474BCA; cursor: pointer;">
+            <span style="color: white;" (click)="signUp()">Sign up</span> 
+        </div>
+</div>
+<div class="flex md:flex-row flex-col-reverse justify-around mt-6">
+    <div class="md:w-2/4 w-full">
+        <div class="font-bold text-2xl mt-4">Login Now</div>
+        <div class="flex mt-5">Hi , Welcome Back &nbsp; <img src="../../../assets/waivinghand.png"
+            alt="waiving Hand" style="width: 20px;">
+        </div>
+        <div class="mt-4">
+            <!-- <div class="md:w-4/5 w-full h-auto flex justify-center p-2" style="background-color: #FFA3BE; cursor: pointer;">
+                <img src="../../../assets/google.png" alt="mangement image" style="width:20px; height: 20px;" class="mt-1">
+                &nbsp;
+                Login with Google 
+            </div> -->
+            <!-- <div id="g_id_onload"
+     data-client_id="898020905059-8ksp6sgjpci8jfqfua0v8taoacg9eg91.apps.googleusercontent.com"
+     data-context="signin"
+     data-login_uri="http://localhost:8080/login"
+     data-auto_select="true"
+     data-itp_support="true">
+</div> -->
+
+  <!-- <div
+    class="g_id_signin"
+    data-type="standard"
+    data-shape="pill"
+    data-theme="filled_blue"
+    data-text="signin_with"
+    data-size="large"
+    data-logo_alignment="left"
+  ></div> -->
+        </div>
+        <div class="mt-4 text-gray-500 flex justify-around 
+        border-gray-400 border-b-2 md:w-4/5
+        " >
+            or Login with Email
+        </div>
+        <form>
+            <div class="mt-4 flex flex-col">
+                <div class="font-bold mb-2">Email</div>
+                <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+                placeholder="Enter your email id" type="email" required [(ngModel)]="postObj.userName" name="username">
+            </div>
+            <div class="mt-4 flex flex-col">
+                <div class="font-bold mb-2">Password</div>
+                <div class="flex flex-row">
+                    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+                    placeholder="Enter your Password" type="password" required [type]="hide ? 'password' : 'text' "
+                    [(ngModel)]="postObj.password" name="password">
+                    <span *ngIf="hide" class="flex items-center">
+                        <img src="../../../assets/hidden.png" alt="hidden" class="w-6 cursor-pointer" (click)="showPassword()">
+                    </span>
+                    <span *ngIf="!hide" class="flex items-center">
+                        <img src="../../../assets/eye.png" alt="eye" class="w-6 cursor-pointer" (click)="showPassword()">
+                    </span>
+                </div>
+            </div>
+        </form>
+        <div class="flex flex-row justify-between mt-4 md:w-4/5">
+            <div class="flex flex-row">
+                <input type="checkbox">
+                <span class="font-bold ml-1">Remember Me</span>
+            </div>
+            <div class="text-purple-600 font-bold cursor-pointer">Forgot Password?</div>
+        </div>
+        <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="onSubmit()">
+            Login</button>
+            <div class="mt-2 flex">
+                <span class="font-bold cursor-default">Not registered yet?</span>
+                <span class="cursor-default font-bold ml-1 text-purple-500">Create an account</span>
+                <span class="ml-1 underline cursor-pointer text-pink-500 font-bold" (click)="signUp()">
+                    SignUp</span>
+            </div>
+    </div>
+
+    <div class="md:w-2/4 w-full flex items-center sm:mt-5">
+        <img src="../../../assets/loginImage.png" alt="mangement image" class="w-full">
+    </div>
+</div>
+</div>
+
+

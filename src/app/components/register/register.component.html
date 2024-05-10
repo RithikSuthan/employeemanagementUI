@@ -1,0 +1,118 @@
+<div style="margin: 10%;width: 80%;height: fit-content;
+background-color: #F9E6E6;padding: 5%;
+" >
+<div class="flex flex-row justify-between">
+    <div style="color: #474BCA" class="font-semibold text-xl">Staff Sync</div>
+        <div class="p-2 pl-5  h-auto flex rounded-md w-24" style="background-color: #474BCA; cursor: pointer;">
+            <span style="color: white;" (click)="signIn()">Sign In</span> 
+        </div>
+</div>
+<div class="flex md:flex-row flex-col-reverse justify-around mt-6">
+    <div class="md:w-2/4 w-full">
+        <div class="font-bold text-2xl mt-4">Register Now</div>
+        <div class="flex mt-5 text-l font-semibold text-gray-500">
+            <span>Hi, Effortlessly oversee your workforce with our intuitive platform.</span>
+            <img src="../../../assets/waivinghand.png" alt="Waiving Hand" style="width: 40px;height: 40px;">
+        </div>
+        
+        <div class="mt-4">
+            <!-- <div class="md:w-4/5 w-full h-auto flex justify-center p-2" style="background-color: #FFA3BE; cursor: pointer;">
+                <img src="../../../assets/google.png" alt="mangement image" style="width:20px; height: 20px;" class="mt-1">
+                &nbsp;
+                Login with Google 
+            </div> -->
+            <!-- <div id="g_id_onload"
+     data-client_id="898020905059-8ksp6sgjpci8jfqfua0v8taoacg9eg91.apps.googleusercontent.com"
+     data-context="signin"
+     data-login_uri="http://localhost:8080/login"
+     data-auto_select="true"
+     data-itp_support="true">
+</div> -->
+
+  <!-- <div
+    class="g_id_signin"
+    data-type="standard"
+    data-shape="pill"
+    data-theme="filled_blue"
+    data-text="signin_with"
+    data-size="large"
+    data-logo_alignment="left"
+  ></div> -->
+        </div>
+        <!-- <div class="mt-4 text-gray-500 flex justify-around 
+        border-gray-400 border-b-2 md:w-4/5
+        " >
+            or Register with Email
+        </div> -->
+        <form>
+            <div class="mt-4 flex flex-col">
+                <div class="font-bold mb-2">Name</div>
+                <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+                placeholder="Name" type="text" required [(ngModel)]="postObj.name" name="name">
+            </div>
+            <div class="mt-4 flex flex-col">
+                <div class="font-bold mb-2">Company</div>
+                <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+                placeholder="Company" type="text" required [(ngModel)]="postObj.company" name="company">
+            </div>
+                <div class="mt-4 flex flex-col">
+                    <div class="font-bold mb-2">Email</div>
+                    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+                    placeholder="Email Id" type="email" required [(ngModel)]="postObj.userName" name="username">
+                </div>
+                <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="verify()">
+                    Verify Email</button>
+            <div class="mt-4 flex flex-col">
+                <div class="font-bold mb-2">Password</div>
+                <div class="flex flex-row">
+                    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+                    placeholder="Password" type="password" required [type]="hideMain ? 'password' : 'text' "
+                    [(ngModel)]="password" name="password">
+                    <span *ngIf="hideMain" class="flex items-center">
+                        <img src="../../../assets/hidden.png" alt="hidden" class="w-6 cursor-pointer" (click)="hideMainPassword()">
+                    </span>
+                    <span *ngIf="!hideMain" class="flex items-center">
+                        <img src="../../../assets/eye.png" alt="eye" class="w-6 cursor-pointer"  (click)="hideMainPassword()">
+                    </span>
+                </div>
+            </div>
+            <div class="mt-4 flex flex-col">
+                <div class="font-bold mb-2">Confirm Password</div>
+                <div class="flex flex-row">
+                    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+                    placeholder="Re-enter Password" type="password" required [type]="hideSub ? 'password' : 'text' "
+                    [(ngModel)]="postObj.password" name="password">
+                    <span *ngIf="hideSub" class="flex items-center">
+                        <img src="../../../assets/hidden.png" alt="hidden" class="w-6 cursor-pointer" (click)="hideSubPassword()">
+                    </span>
+                    <span *ngIf="!hideSub" class="flex items-center">
+                        <img src="../../../assets/eye.png" alt="eye" class="w-6 cursor-pointer" (click)="hideSubPassword()">
+                    </span>
+                </div>
+            </div>
+        </form>
+        <!-- <div class="flex flex-row justify-between mt-4 md:w-4/5">
+            <div class="flex flex-row">
+                <input type="checkbox">
+                <span class="font-bold ml-1">Remember Me</span>
+            </div>
+            <div class="text-purple-600 font-bold cursor-pointer">Forgot Password?</div>
+        </div> -->
+        <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="register()" id="registerButton" [disabled]="otp"
+        >
+            Register</button>
+            <div class="mt-2 flex">
+                <span class="font-bold cursor-default">Already have An Account?</span>
+                <span class="cursor-default font-bold ml-1 text-purple-500">Login Into Account</span>
+                <span class="ml-1 underline cursor-pointer text-pink-500 font-bold" (click)="signIn()">
+                    SignIn</span>
+            </div>
+    </div>
+
+    <div class="md:w-2/4 w-full flex items-center sm:mt-5">
+        <img src="../../../assets/loginImage.png" alt="mangement image" class="w-full">
+    </div>
+</div>
+</div>
+
+
