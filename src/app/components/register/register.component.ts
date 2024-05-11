@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   otpBox:any;
   otpVal:any;
   otpInpVal:any;
+  newUser:any;
   constructor(private router:Router,private employee:EmployeeService) { }
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class RegisterComponent implements OnInit {
     this.hideSub=true;
     this.otp=true;
     this.otpBox=false;
+    this.newUser=true;
   }
   otpChange()
   {
@@ -97,5 +99,25 @@ export class RegisterComponent implements OnInit {
             alert(error["error"]);
           }
     )
+  }
+  emailExist()
+  {
+    const email=this.postObj["userName"];
+    this.employee.checkExistUser(email).subscribe(
+      (response)=>{
+          if(response["message"]=="This email Already exists")
+            {
+              alert("This email Already exists ,Try with another email");
+            }
+          else if(response["message"]=="New user")
+            {
+                this.newUser=false;
+            }
+      },
+      (error)=>
+        {
+            alert(error["error"]);
+        }
+    );
   }
 }

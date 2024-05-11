@@ -63,4 +63,9 @@ export class EmployeeService {
     const url=this.email_service_url+EndPoints.sendOtp;
     return this.http.post<any>(url,postObj);
   }
+  checkExistUser(email:any):Observable<any>
+  {
+    const url=`${this.employee_service_url}${EndPoints.existEmail}?email=${email}`;
+    return this.http.get<any>(url);
+  }
 }

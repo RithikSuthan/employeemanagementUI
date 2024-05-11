@@ -58,12 +58,15 @@ background-color: #F9E6E6;padding: 5%;
                 <div class="mt-4 flex flex-col">
                     <div class="font-bold mb-2">Email</div>
                     <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
-                    placeholder="Email Id" type="email" required [(ngModel)]="postObj.userName" name="username">
+                    placeholder="Email Id" type="email" required [(ngModel)]="postObj.userName" name="username" (change)="emailExist()">
                 </div>
                 <br>
                 <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
-                    placeholder="Otp " type="text" required [(ngModel)]="otpInpVal" name="otpVal" (change)="otpChange()">
-                    <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="verify()">
+                    placeholder="Otp " type="text" required [(ngModel)]="otpInpVal" name="otpVal" (change)="otpChange()"
+                    [disabled]="newUser" [style.cursor]="newUser?'not-allowed':'pointer'"
+                    >
+                    <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="verify()"
+                    [disabled]="newUser" [style.cursor]="newUser?'not-allowed':'pointer'">
                         Send OTP</button>
             <div class="mt-4 flex flex-col" >
                 <div class="font-bold mb-2">Password</div>

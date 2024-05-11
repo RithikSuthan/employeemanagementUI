@@ -8,4 +8,5 @@ export class EndPoints {
     public static editEmployee='/update';
     public static registerEmployee="/register";
     public static sendOtp="/sendotp";
+    public static existEmail="/existemail";
 }
