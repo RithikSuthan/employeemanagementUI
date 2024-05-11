@@ -22,19 +22,29 @@ export class RegisterComponent implements OnInit {
   hideSub:any;
   password:any;
   otp:any;
+  otpBox:any;
+  otpVal:any;
+  otpInpVal:any;
   constructor(private router:Router,private employee:EmployeeService) { }
 
   ngOnInit(): void {
     this.hideMain=true;
     this.hideSub=true;
     this.otp=true;
-    const ele=document.getElementById("registerButton");
-    if(ele)
+    this.otpBox=false;
+  }
+  otpChange()
+  {
+    if(this.otpVal==this.otpInpVal)
       {
-        ele.style.cursor="not-allowed";
+        alert("Otp matched");
+        this.otp=false;
+      }
+      else
+      {
+        alert("Otp is Not matching")
       }
   }
-
   signIn()
   {
       this.router.navigateByUrl("/");
@@ -78,11 +88,13 @@ export class RegisterComponent implements OnInit {
     this.employee.sendOtp(postObj).subscribe(
       (response)=>
         {
-          alert("Response");
+          alert(response["message"]);
+          this.otpVal=response["otp"];
+          this.otpBox=true;
         },
         (error)=>
           {
-            alert("error");
+            alert(error["error"]);
           }
     )
   }

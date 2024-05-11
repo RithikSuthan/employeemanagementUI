@@ -60,14 +60,18 @@ background-color: #F9E6E6;padding: 5%;
                     <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
                     placeholder="Email Id" type="email" required [(ngModel)]="postObj.userName" name="username">
                 </div>
-                <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="verify()">
-                    Verify Email</button>
-            <div class="mt-4 flex flex-col">
+                <br>
+                <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+                    placeholder="Otp " type="text" required [(ngModel)]="otpInpVal" name="otpVal" (change)="otpChange()">
+                    <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="verify()">
+                        Send OTP</button>
+            <div class="mt-4 flex flex-col" >
                 <div class="font-bold mb-2">Password</div>
                 <div class="flex flex-row">
                     <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
                     placeholder="Password" type="password" required [type]="hideMain ? 'password' : 'text' "
-                    [(ngModel)]="password" name="password">
+                    [(ngModel)]="password" name="password" [disabled]="otp"
+                    [style.cursor]="otp?'not-allowed':'pointer'">
                     <span *ngIf="hideMain" class="flex items-center">
                         <img src="../../../assets/hidden.png" alt="hidden" class="w-6 cursor-pointer" (click)="hideMainPassword()">
                     </span>
@@ -81,7 +85,8 @@ background-color: #F9E6E6;padding: 5%;
                 <div class="flex flex-row">
                     <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
                     placeholder="Re-enter Password" type="password" required [type]="hideSub ? 'password' : 'text' "
-                    [(ngModel)]="postObj.password" name="password">
+                    [(ngModel)]="postObj.password" name="password" [disabled]="otp"
+                    [style.cursor]="otp?'not-allowed':'pointer'">
                     <span *ngIf="hideSub" class="flex items-center">
                         <img src="../../../assets/hidden.png" alt="hidden" class="w-6 cursor-pointer" (click)="hideSubPassword()">
                     </span>
@@ -98,7 +103,8 @@ background-color: #F9E6E6;padding: 5%;
             </div>
             <div class="text-purple-600 font-bold cursor-pointer">Forgot Password?</div>
         </div> -->
-        <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="register()" id="registerButton" [disabled]="otp"
+        <button class="p-2 w-full mt-2 md:w-4/5 bg-purple-700 text-white" (click)="register()" [disabled]="otp"
+        [style.cursor]="otp?'not-allowed':'pointer'"
         >
             Register</button>
             <div class="mt-2 flex">
