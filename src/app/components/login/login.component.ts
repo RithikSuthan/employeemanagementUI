@@ -48,6 +48,10 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('company',response['company']);
             this.router.navigateByUrl("/home");
           }
+          else
+          {
+            alert(response['message']);
+          }
       },
       (error)=>
         {
