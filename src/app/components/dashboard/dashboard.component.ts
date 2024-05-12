@@ -163,4 +163,21 @@ editEmployee()
           }
     ) 
 }
+checkExistEmployee()
+{
+  const email=this.postObj["email"];
+  this.employee.checkExistUser(email).subscribe(
+    (response)=>{
+        if(response["message"]=="This email Already exists")
+          {
+            alert(response["message"]);
+            this.postObj["email"]="";
+          }
+    },
+    (error)=>
+      {
+          alert(error["error"]);
+      }
+  ); 
+}
 }

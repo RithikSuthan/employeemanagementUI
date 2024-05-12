@@ -68,4 +68,9 @@ export class EmployeeService {
     const url=`${this.employee_service_url}${EndPoints.existEmail}?email=${email}`;
     return this.http.get<any>(url);
   }
+  checkExistEmployee(email:any):Observable<any>
+  {
+    const url=`${this.employee_service_url}${EndPoints.existEmailEmployee}?email=${email}`;
+    return this.http.get<any>(url);
+  }
 }
