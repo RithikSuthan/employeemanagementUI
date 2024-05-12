@@ -187,9 +187,11 @@ generateId(uuid:any)
 {
   this.idModel=true;
   this.idUUID=uuid;
+  document.body.style.overflow='hidden';
 }
 close1()
 {
   this.idModel=false;
+  document.body.style.overflow='auto';
 }
 }

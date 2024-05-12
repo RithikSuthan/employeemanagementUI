@@ -31,22 +31,21 @@ export class GenerateIdComponent implements OnInit {
             )
   }
   saveAsPDF(): void {
-
     // Initialize jsPDF
     const doc = new jsPDF();
-
+  
     // Get the HTML content of the card
     const cardContainer = document.getElementById('id-card-container');
-    
+  
     // Check if the cardContainer exists
     if (cardContainer) {
       const cardHTML = cardContainer.innerHTML;
-
+  
       // Convert HTML to PDF
       doc.html(cardHTML, {
-        callback: function (pdf) {
+        callback: (pdf) => {
           // Save the PDF
-          pdf.save('id_card.pdf');
+          pdf.save(`${this.loadObject['employeeName']}.pdf`);
         }
       });
     } else {
