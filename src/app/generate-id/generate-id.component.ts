@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
 import jsPDF from 'jspdf';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-generate-id',
@@ -12,11 +13,11 @@ export class GenerateIdComponent implements OnInit {
 
   @Input() employeeuuid:any;
   loadObject:any;
+  @Output() close1 =new EventEmitter<any>();
   constructor(private employee:EmployeeService) { }
 
 
   ngOnInit(): void {
-            this.employeeuuid="4c92cf97-7034-466c-ac5e-e1f519f79def"
             this.employee.editFetchEmployee(this.employeeuuid).subscribe(
               (response)=>
                 {
@@ -55,6 +56,6 @@ export class GenerateIdComponent implements OnInit {
 
   close()
   {
-    
+      this.close1.emit();
   }
 }

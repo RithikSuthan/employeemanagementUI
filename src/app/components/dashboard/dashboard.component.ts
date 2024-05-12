@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
     this.fetchManagers();
     this.popAddModle=false;
     this.popEditModel=false;
-    this.idModel=true;
+    this.idModel=false;
   }
   
   fetchManagers()
@@ -187,5 +187,9 @@ generateId(uuid:any)
 {
   this.idModel=true;
   this.idUUID=uuid;
+}
+close1()
+{
+  this.idModel=false;
 }
 }
