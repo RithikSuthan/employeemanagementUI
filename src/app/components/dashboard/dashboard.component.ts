@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit {
   roles=['Software Developer','Software tester','Dev OPS','Data Analyst','HR','Manager','Team Leader']
   popAddModle:any;
   popEditModel:any;
+  idModel:any;
+  idUUID:any;
 
   postObj={
     employeeName:'',
@@ -42,6 +44,7 @@ export class DashboardComponent implements OnInit {
     this.fetchManagers();
     this.popAddModle=false;
     this.popEditModel=false;
+    this.idModel=true;
   }
   
   fetchManagers()
@@ -179,5 +182,10 @@ checkExistEmployee()
           alert(error["error"]);
       }
   ); 
+}
+generateId(uuid:any)
+{
+  this.idModel=true;
+  this.idUUID=uuid;
 }
 }

@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { GenerateIdComponent } from './generate-id/generate-id.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FooterComponent,
     HomeComponent,
     SidenavComponent,
-    DashboardComponent
+    DashboardComponent,
+    GenerateIdComponent
   ],
   imports: [
     BrowserModule,

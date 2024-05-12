@@ -72,6 +72,7 @@
                 <div class="w-full md:w-1/6 items-center flex flex-row md:flex-col whitespace-normal justify-around cursor-pointer text-center">
                     <div class="bg-pink-400 w-full p-2 text-center text-white" (click)="editFetchEmployee(item['uuid'])">Edit</div>
                     <div class="bg-red-600 w-full p-2 text-center text-white" (click)="delete(item['uuid'])">Delete</div>    
+                    <div class="bg-green-600 w-full p-2 text-center text-white" (click)="generateId(item['uuid'])">Id</div>    
                 </div>
             </div>
         </ng-container>
@@ -226,3 +227,6 @@
 </div>
 
 
+<app-generate-id *ngIf="idModel" [employeeuuid]="idUUID">
+
+</app-generate-id>

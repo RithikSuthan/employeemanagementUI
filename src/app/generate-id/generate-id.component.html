@@ -1,0 +1,82 @@
+<!-- 
+<div style="background-color: white;top:8%;z-index: 50;"
+ class=" w-80 rounded-lg top-1/5 md:ml-1/5 ml-1/12 p-1/12 fixed md:text-2xl overflow-y-auto">
+<div id="id-card-container">
+    <div class="mt-4 flex flex-col">
+        <img src="../../assets/logo.JPG">
+    </div>
+    
+    <div class="mt-4 flex flex-col items-center">
+        <img [src]="loadObject['profileImage']" alt="Photo Unavailable" class="w-32 h-32 rounded-full border-gray-400">
+    </div>
+    
+    
+    
+    <div class="mt-4 flex flex-col  items-center">
+        <div class="font-bold mb-2 text-2xl">{{loadObject['employeeName']}}</div>
+    </div>
+    <div class="mt-4 flex flex-col  items-center">
+        <div class=" mb-2 text-xl">{{loadObject['position']}}</div>
+    </div>
+    <div class="mt-4 flex flex-row justify-center">
+        <div class=" mb-2 text-l">Email:&nbsp;</div>
+        <div class=" mb-2 text-l">{{loadObject['email']}}</div>
+    </div>
+    <div class="mt-4 flex flex-row justify-center">
+        <div class=" mb-2 text-l">Mobile:&nbsp;</div>
+        <div class=" mb-2 text-l">{{loadObject['phoneNumber']}}</div>
+    </div>
+    
+</div>
+
+
+<div class=" mt-4 flex  justify-center">
+    <div class="bg-green-500 w-fit-content p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="saveAsPDF()">Save PDF</div>
+</div>
+
+</div> -->
+
+
+
+<div style="background-color: white;top:8%;z-index: 50;"
+ class=" w-80 rounded-lg top-1/5 md:ml-1/5 ml-1/12 p-1/12 fixed md:text-2xl overflow-y-auto">
+ <div class=" flex  justify-end">
+    <div class="bg-red-500 w-fit-content p-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="close()">X</div>
+</div>
+<div id="id-card-container">
+    <div class="mt-4 flex flex-row w-28">
+        <img src="../../assets/logo.JPG">
+    </div>
+    <!-- <div class="mt-4 flex flex-col">
+        <img src="../../assets/logo.JPG">
+    </div>
+    
+    <div class="mt-4 flex flex-col items-center">
+        <img [src]="loadObject['profileImage']" alt="Photo Unavailable" class="w-32 h-32 rounded-full border-gray-400">
+    </div> -->
+    
+    <div class="mt-4 flex flex-row w-36">
+        <img [src]="loadObject['profileImage']" alt="Photo Unavailable" class="w-28 rounded-full border-gray-400">
+    </div>
+    
+    <div class="mt-4 flex flex-row w-96">
+        <div class=" mb-2 text-s">{{loadObject['employeeName']}}</div>
+    </div>
+    <div class="flex flex-row w-96">
+        <div class=" mb-2 text-s">{{loadObject['position']}}</div>
+    </div>
+    <div class="mt-4 flex flex-row w-96">
+        <div class=" mb-2 text-s">{{loadObject['email']}}</div>
+    </div>
+    <div class=" flex flex-row w-96">
+        <div class=" mb-2 text-s">{{loadObject['phoneNumber']}}</div>
+    </div>
+    
+</div>
+
+
+<div class=" mt-4 flex  justify-center">
+    <div class="bg-green-500 w-fit-content p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="saveAsPDF()">Save PDF</div>
+</div>
+
+</div>
