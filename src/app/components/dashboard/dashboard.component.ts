@@ -181,7 +181,7 @@ editEmployee()
 checkExistEmployee()
 {
   const email=this.postObj["email"];
-  this.employee.checkExistUser(email).subscribe(
+  this.employee.checkExistEmployee(email).subscribe(
     (response)=>{
         if(response["message"]=="This email Already exists")
           {
