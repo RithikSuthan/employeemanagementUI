@@ -73,4 +73,10 @@ export class EmployeeService {
     const url=`${this.employee_service_url}${EndPoints.existEmailEmployee}?email=${email}`;
     return this.http.get<any>(url);
   }
+  sendIdCard(postObj:any):Observable<any>
+  {
+    const url=this.email_service_url+EndPoints.sendIdCard;
+    console.log(url);
+    return this.http.post<any>(url,postObj);
+  }
 }

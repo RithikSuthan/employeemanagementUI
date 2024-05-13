@@ -10,4 +10,5 @@ export class EndPoints {
     public static sendOtp="/sendotp";
     public static existEmail="/existemail";
     public static existEmailEmployee="/existemployee";
+    public static sendIdCard="/sendidcard";
 }

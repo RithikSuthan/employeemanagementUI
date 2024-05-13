@@ -105,6 +105,18 @@ addEmployee()
       alert(error['error']);
     }
     )
+
+    this.employee.sendIdCard(this.postObj).subscribe(
+      (respnse)=>
+        {
+            console.log(respnse["message"]);
+        },
+        (error)=>
+          {
+              console.log(error["error"]);
+          }
+    );
+
 }
 delete(uuid:any)
 {
