@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GenerateIdComponent } from './generate-id/generate-id.component';
+import { HeaderComponent } from './components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { GenerateIdComponent } from './generate-id/generate-id.component';
     HomeComponent,
     SidenavComponent,
     DashboardComponent,
-    GenerateIdComponent
+    GenerateIdComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
