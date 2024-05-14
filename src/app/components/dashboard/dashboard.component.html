@@ -51,9 +51,13 @@
         <!-- Table Rows -->
         <ng-container *ngFor="let item of dashboardData">
             <div class="border-b-4 flex flex-col md:flex-row justify-between whitespace-normal p-4">
+                <!-- <div class="w-full md:w-1/6 items-center flex justify-center">
+                    <img [src]="item['profileImage'] ? item['profileImage'] : '../../../../../assets/noPhoto.jpg'" alt="Photo Unavailable" class="w-15 h-15">
+                </div> -->
                 <div class="w-full md:w-1/6 items-center flex justify-center">
                     <img [src]="item['profileImage'] ? item['profileImage'] : '../../../../../assets/noPhoto.jpg'" alt="Photo Unavailable" class="w-15 h-15">
                 </div>
+                
                 <div class="w-full md:w-1/6 items-center flex font-bold text-center justify-center">
                     {{item['employeeName']}}
                 </div>
@@ -126,8 +130,9 @@
 
 <div class="mt-4 flex flex-col">
     <div class="font-bold mb-2">Image Link</div>
-    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
-    placeholder="Image Link" type="text" required [(ngModel)]="postObj.profileImage" name="profileImage">
+    <!-- <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Image Link" type="text" required [(ngModel)]="postObj.profileImage" name="profileImage"> -->
+    <input type="file" (change)="onFileSelected($event)">
 </div>
 <!-- <div class="mt-4 flex flex-col">
     <div class="font-bold mb-2">Reports To</div>
@@ -198,9 +203,11 @@
 </div>
 <div class="mt-4 flex flex-col">
     <div class="font-bold mb-2">Image Link</div>
-    <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
-    placeholder="Image Link" type="text" required [(ngModel)]="editObj.profileImage" name="profileImage">
+    <!-- <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             
+    placeholder="Image Link" type="text" required [(ngModel)]="editObj.profileImage" name="profileImage"> -->
+    <input type="file" (change)="onFileSelectedEdit($event)">
 </div>
+
 <!-- <div class="mt-4 flex flex-col">
     <div class="font-bold mb-2">Reports To</div>
     <input class="md:w-4/5 w-full h-auto flex p-2" style="background-color: #FFA3BE;"             

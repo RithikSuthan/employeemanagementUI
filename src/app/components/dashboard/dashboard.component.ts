@@ -206,4 +206,30 @@ close1()
   this.idModel=false;
   document.body.style.overflow='auto';
 }
+onFileSelected(event: any) {
+  const file: File = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const base64Image: string = reader.result as string;
+      console.log(base64Image); // This will log the base64-encoded string
+      // You can then share this base64-encoded string as needed
+      this.postObj['profileImage']=base64Image;
+    };
+  }
+}
+onFileSelectedEdit(event: any) {
+  const file: File = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const base64Image: string = reader.result as string;
+      console.log(base64Image); // This will log the base64-encoded string
+      // You can then share this base64-encoded string as needed
+      this.editObj['profileImage']=base64Image;
+    };
+  }
+}
 }
