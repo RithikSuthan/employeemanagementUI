@@ -8,7 +8,7 @@ Welcome to Staff Sync, a dynamic platform aimed at enhancing team coordination!
 
 ## Overview
 
-Staff Sync is a web application built with Angular, Tailwind CSS, Spring Boot, and MongoDB. It provides a polished login page UI tailored for seamless performance across web and mobile interfaces.
+Staff Sync is a comprehensive team coordination platform designed to streamline various aspects of team management and communication. Built with Angular, Tailwind CSS, Spring Boot, and MongoDB, Staff Sync offers a range of features to enhance team collaboration and efficiency.With Staff Sync, teams can seamlessly manage employee records, facilitate communication between team members, and ensure smooth workflow processes. The platform provides a user-friendly interface that promotes intuitive navigation and accessibility across different devices
 
 ## Features
 
