@@ -1,0 +1,49 @@
+<div class="w-4/5 bg-gray-200 h-fit-content font-sans m-3 p-2 flex flex-col">
+<span class="p-1 font-bold">Request for Leave</span>
+<div class="flex flex-col">
+    <div class="p-1 font-bold mb-2">Leave Type *</div>
+    <div>
+        <select class="w-4/5 font-sans" required [(ngModel)]="postObjModel.leaveType">
+            <option></option>
+            <option>Sick Leave</option>
+            <option>Regular Leave</option>
+            <option>Matrnity Leave</option>
+            <option>Others</option>
+        </select>
+    </div>
+</div>
+<div class="w-4/5 flex flex-row justify-between mb-1">
+    <div class="flex flex-col">
+        <div class="p-1 font-bold mb-2">From *</div>
+        <div class="flex flex-row">
+            <input type="time" class='w-32 mr-2' required [(ngModel)]="postObjModel.fromTime">
+            <input type="date" class='w-32' required [(ngModel)]="postObjModel.fromDate">
+        </div>
+        </div>
+</div>
+<div class="w-4/5 flex flex-row justify-between mb-1">
+        <div class="flex flex-col">
+            <div class="p-1 font-bold mb-2">To *</div>
+            <div class="flex flex-row">
+                <input type="time" class='w-32 mr-2' required [(ngModel)]="postObjModel.toTime">
+                <input type="date" class='w-32' required [(ngModel)]="postObjModel.toDate">
+            </div>
+            </div>
+</div>
+<!-- <div class="flex flex-col mb-1">
+    <div class="p-1 font-bold mb-2">Attach File</div>
+    <div>
+        <input type="file">
+    </div>
+</div> -->
+<div class="flex flex-col">
+    <div class="p-1 font-bold mb-2">Comments</div>
+    <div>
+        <input type="text" class="w-4/5" required [(ngModel)]="postObjModel.comments">
+    </div>
+</div>
+<div class="flex justify-end m-5">
+    <button class="bg-blue-400 p-2 rounded-lg mr-2" (click)="closeModel()">Cancel</button>
+    <button class="bg-green-400 p-2 rounded-lg" (click)="postObj()">Request</button>
+</div>
+</div>

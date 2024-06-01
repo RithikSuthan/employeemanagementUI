@@ -79,4 +79,9 @@ export class EmployeeService {
     console.log(url);
     return this.http.post<any>(url,postObj);
   }
+  sendLeaveRequest(postObj:any):Observable<any>
+  {
+    const url=this.employee_service_url+EndPoints.leaveRequest;
+    return this.http.post<any>(url,postObj);
+  }
 }

@@ -14,6 +14,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GenerateIdComponent } from './generate-id/generate-id.component';
 import { HeaderComponent } from './components/header/header.component';
 import { EmployeehomeComponent } from './components/employeehome/employeehome.component';
+import { LeaveComponent } from './components/leave/leave.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { EmployeehomeComponent } from './components/employeehome/employeehome.co
     DashboardComponent,
     GenerateIdComponent,
     HeaderComponent,
-    EmployeehomeComponent
+    EmployeehomeComponent,
+    LeaveComponent
   ],
   imports: [
     BrowserModule,
