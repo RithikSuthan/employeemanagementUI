@@ -13,6 +13,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GenerateIdComponent } from './generate-id/generate-id.component';
 import { HeaderComponent } from './components/header/header.component';
+import { EmployeehomeComponent } from './components/employeehome/employeehome.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { HeaderComponent } from './components/header/header.component';
     SidenavComponent,
     DashboardComponent,
     GenerateIdComponent,
-    HeaderComponent
+    HeaderComponent,
+    EmployeehomeComponent
   ],
   imports: [
     BrowserModule,

@@ -48,6 +48,11 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('company',response['company']);
             this.router.navigateByUrl("/home");
           }
+          else if(response.message =="Login Successful")
+            {
+              alert(response['message']);
+              this.router.navigateByUrl("/user");
+            }
           else
           {
             alert(response['message']);
