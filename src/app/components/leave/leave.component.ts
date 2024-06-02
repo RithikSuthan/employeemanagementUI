@@ -20,8 +20,28 @@ export class LeaveComponent implements OnInit {
     email:localStorage.getItem("userName")
   }
   constructor(private service:EmployeeService) { }
-
+  uuid:any;
+  employeeData:any;
   ngOnInit(): void {
+    this.uuid=localStorage.getItem("uuid");
+    this.fetchEmployee();
+  }
+  fetchEmployee=()=>
+  {
+      try
+      {
+          this.service.editFetchEmployee(this.uuid).subscribe(
+            (response)=>
+              {
+                this.employeeData=response;
+                // console.log(response);
+              }
+          );
+      }
+      catch(error)
+      {
+          console.error(error);
+      }
   }
   closeModel()
   {
