@@ -12,4 +12,5 @@ export class EndPoints {
     public static existEmailEmployee="/existemployee";
     public static sendIdCard="/sendidcard";
     public static leaveRequest="/leave";
+    public static addTask="/addTask";
 }

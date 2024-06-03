@@ -84,4 +84,9 @@ export class EmployeeService {
     const url=this.employee_service_url+EndPoints.leaveRequest;
     return this.http.post<any>(url,postObj);
   }
+  addTask(postObj:any):Observable<any>
+  {
+    const url=this.employee_service_url+EndPoints.addTask;
+    return this.http.post<any>(url,postObj);
+  }
 }

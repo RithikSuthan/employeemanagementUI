@@ -16,6 +16,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { EmployeehomeComponent } from './components/employeehome/employeehome.component';
 import { LeaveComponent } from './components/leave/leave.component';
 import { TasksComponent } from './components/tasks/tasks.component';
+import { TaskcardComponent } from './components/taskcard/taskcard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { TasksComponent } from './components/tasks/tasks.component';
     HeaderComponent,
     EmployeehomeComponent,
     LeaveComponent,
-    TasksComponent
+    TasksComponent,
+    TaskcardComponent
   ],
   imports: [
     BrowserModule,

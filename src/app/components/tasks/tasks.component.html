@@ -1,4 +1,81 @@
-<div class="task-container w-5/6 h-full">
-    
+<div style="height: 100vh;" class="text-white font-sans text-xl p-2 task-container w-5/6 flex justify-between flex-row">
+<div class="w-1/5 " style="border-right: dotted white 3px ;">
+<div class="bg-blue-500 w-full rounded-tr-full rounded-br-full
+    p-3 h-fit-content
+    ">
+        New Tasks
+        
+    </div>
+    <div class="w-full cursor-pointer bg-gray-300 flex justify-center
+    rounded-full p-3 mt-2
+    " (click)="quickTaskModel()">
+        +Quick Task
+    </div>
+</div>
+<div class="w-1/5" style="border-right: dotted white 3px ;">
+        <div class="bg-yellow-500 w-full rounded-tr-full rounded-br-full
+            p-3 h-fit-content
+            ">
+                Today Task
+                
+            </div>
+</div>
+<div class="w-1/5" style="border-right: dotted white 3px ;">
+                <div class="bg-red-500 w-full rounded-tr-full rounded-br-full
+                    p-3 h-fit-content
+                    ">
+                        Stage and Tested
+                        
+                    </div>
+                    </div>
+<div class="w-1/5" style="border-right: dotted white 3px ;">
+                        <div class="bg-green-500 w-full rounded-tr-full rounded-br-full
+                            p-3 h-fit-content
+                            ">
+                                Production
+                                
+                            </div>
+                            </div>
+  </div>
+  
+  <div class="overlay" *ngIf="quickTask">
+    <div class="text-xl modal bg-white rounded-xl flex flex-col w-fit-content
+    ">
+      <div class="flex-wrap " style="display: flex;
+      justify-content: space-between;">
+        <label>
+            Task:
+        </label>
+        <input type="text" class="bg-blue-300 flex " [(ngModel)]="addTask.description">
+      </div>
+      <div class="flex flex-wrap  justify-between">
+        <label>
+            DeadLine:
+        </label>
+        <input type="datetime-local" class="bg-blue-300 flex " [(ngModel)]="addTask.deadline">
+      </div>
+      <div class="flex flex-wrap  justify-between">
+        <label>
+            Report To:
+        </label>
+        <select [(ngModel)]="addTask.reportTo" class="w-3/5">
+            <option>Ramesh</option>
+            <option>Suresh</option>
+        </select>
+      </div>
+      <div class="flex justify-between">
+        <div class="bg-green-400 w-20 p-4 flex justify-center 
+        cursor-pointer
+        rounded-xl" (click)="add()">
+            Add
+      </div>
+      <div class="bg-red-400 w-20 p-4 flex justify-center 
+      cursor-pointer
+      rounded-xl" (click)="cancel()">
+        Cancel
+  </div>
+      </div>
+
+    </div>
   </div>
   
