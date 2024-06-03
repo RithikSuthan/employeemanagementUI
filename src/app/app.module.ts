@@ -15,6 +15,7 @@ import { GenerateIdComponent } from './generate-id/generate-id.component';
 import { HeaderComponent } from './components/header/header.component';
 import { EmployeehomeComponent } from './components/employeehome/employeehome.component';
 import { LeaveComponent } from './components/leave/leave.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { LeaveComponent } from './components/leave/leave.component';
     GenerateIdComponent,
     HeaderComponent,
     EmployeehomeComponent,
-    LeaveComponent
+    LeaveComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
