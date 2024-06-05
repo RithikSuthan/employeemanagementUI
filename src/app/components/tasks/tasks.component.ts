@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from 'src/app/services/employee.service';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-tasks',
@@ -8,66 +8,76 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class TasksComponent implements OnInit {
 
-  quickTask:any;
-  employee_data:any;
-  addTask={
-    description:"",
-    deadline:"",
-    reportTo:"",
-    email:localStorage.getItem("userName"),
-    uuid:localStorage.getItem("uuid")
-  }
-  constructor(private employee:EmployeeService) { }
+  quickTask: boolean = false;
+  employee_data: any = {
+    tasks: []
+  };
+  addTask = {
+    description: "",
+    deadline: "",
+    reportTo: "",
+    email: localStorage.getItem("userName"),
+    uuid: localStorage.getItem("uuid")
+  };
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.quickTask=false;
     this.loadDashboard();
   }
-  loadDashboard=()=>
-    {
-        try
-        {
-            this.employee.fetchTask(localStorage.getItem("uuid")).subscribe(
-              (response)=>
-                {
-                    this.employee_data=response;
-                    console.log(this.employee_data);
-                }
-            );
-        }
-        catch(error)
-        {
-          console.error(error);
-        }
-    }
-  quickTaskModel()
-  {
-      this.quickTask=!this.quickTask;
-  }
-  add()
-  {
-      // console.log(this.addTask);
-      try
-      {
-          this.employee.addTask(this.addTask).subscribe(
-            (response)=>
-              {
-                // alert(response);
-                this.ngOnInit();
-              }
-          )        
-      }
-      catch(error)
-      {
-        console.error(error);
-      }
-  }
-  cancel()
-  {
-    this.quickTask=!this.quickTask;
-  }
-  }
-  
-  
-  
 
+  loadDashboard() {
+    // Simulating fetching data. Replace this with actual data fetching.
+    this.employee_data = {
+      tasks: [
+        { id: 1, status: 'assigned', description: 'Task 1' },
+        { id: 2, status: 'todo', description: 'Task 2' },
+        { id: 3, status: 'stage', description: 'Task 3' },
+        { id: 4, status: 'production', description: 'Task 4' }
+      ]
+    };
+  }
+
+  quickTaskModel() {
+    this.quickTask = !this.quickTask;
+  }
+
+  add() {
+    this.employee_data.tasks.push({ ...this.addTask, status: 'assigned' });
+    this.quickTask = false;
+  }
+
+  cancel() {
+    this.quickTask = false;
+  }
+
+  drop(event: CdkDragDrop<any[]>, newStatus: string) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+      event.container.data[event.currentIndex].status = newStatus;
+    }
+  }
+
+  getAssignedTasks() {
+    return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'assigned');
+  }
+
+  getTodoTasks() {
+    return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'todo');
+  }
+
+  getStageTasks() {
+    return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'stage');
+  }
+
+  getProductionTasks() {
+    return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'production');
+  }
+}

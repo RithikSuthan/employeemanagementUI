@@ -17,6 +17,7 @@ import { EmployeehomeComponent } from './components/employeehome/employeehome.co
 import { LeaveComponent } from './components/leave/leave.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskcardComponent } from './components/taskcard/taskcard.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { TaskcardComponent } from './components/taskcard/taskcard.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule 
   ],
   providers: [
     

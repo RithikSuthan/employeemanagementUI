@@ -1,114 +1,107 @@
 <div style="min-height: 100vh;height: fit-content;" class="text-white font-sans text-xl p-2 task-container w-5/6 flex justify-between flex-row">
-<div class="w-1/5 " style="border-right: dotted white 3px ;">
-<div class="bg-blue-500 w-full rounded-tr-full rounded-br-full
-    p-3 h-fit-content
-    ">
-        New Tasks
-        
-    </div>
-    <div class="w-full cursor-pointer bg-gray-300 flex justify-center
-    rounded-full p-3 mt-2
-    " (click)="quickTaskModel()">
-        +Quick Task
-    </div>
-    <div *ngFor="let item of employee_data['tasks'];let i=index" >
-        <div *ngIf="item['status']=='assigned'">
-            <app-taskcard [cardData]="employee_data['tasks'][i]">
-        
-            </app-taskcard>
+    <div class="w-1/5" style="border-right: dotted white 3px;">
+        <div class="bg-blue-500 w-full rounded-tr-full rounded-br-full p-3 h-fit-content">
+          New Tasks
         </div>
-
+        <div class="w-full cursor-pointer bg-gray-300 flex justify-center rounded-full p-3 mt-2" (click)="quickTaskModel()">
+          +Quick Task
+        </div>
+        <div cdkDropList 
+             id="assignedList"
+             (cdkDropListDropped)="drop($event, 'assigned')" 
+             [cdkDropListData]="getAssignedTasks()"
+             [cdkDropListConnectedTo]="['todoList', 'stageList', 'productionList']">
+          <div *ngIf="getAssignedTasks().length > 0">
+            <div *ngFor="let item of getAssignedTasks()" cdkDrag>
+              <app-taskcard [cardData]="item"></app-taskcard>
+            </div>
+          </div>
+          <div *ngIf="getAssignedTasks().length === 0" class="text-center text-gray-500 mt-2">No tasks assigned.</div>
+        </div>
+      </div>
+  
+    <div class="w-1/5" style="border-right: dotted white 3px;">
+      <div class="bg-yellow-500 w-full rounded-tr-full rounded-br-full p-3 h-fit-content">
+        Today Task
+      </div>
+      <div cdkDropList 
+           id="todoList" 
+           (cdkDropListDropped)="drop($event, 'todo')" 
+           [cdkDropListData]="getTodoTasks()"
+           [cdkDropListConnectedTo]="['assignedList', 'stageList', 'productionList']">
+        <div *ngIf="getTodoTasks().length>0">
+            <div *ngFor="let item of getTodoTasks()" cdkDrag>
+                <app-taskcard [cardData]="item"></app-taskcard>
+              </div>
+        </div>
+        <div *ngIf="getTodoTasks().length === 0" class="text-center text-gray-500 mt-2">No tasks assigned.</div>
+      </div>
     </div>
-</div>
-<div class="w-1/5" style="border-right: dotted white 3px ;">
-        <div class="bg-yellow-500 w-full rounded-tr-full rounded-br-full
-            p-3 h-fit-content
-            ">
-                Today Task
-                
-            </div>
-            <div *ngFor="let item of employee_data['tasks'];let i=index">
-                <div *ngIf="item['status']=='todo'">
-                    <app-taskcard [cardData]="employee_data['tasks'][i]">
-                
-                    </app-taskcard>
-                </div>
-        
-            </div>
-            
-</div>
-<div class="w-1/5" style="border-right: dotted white 3px ;">
-                <div class="bg-red-500 w-full rounded-tr-full rounded-br-full
-                    p-3 h-fit-content
-                    ">
-                        Stage and Tested
-                        
-                    </div>
-                    <div *ngFor="let item of employee_data['tasks'];let i=index">
-                        <div *ngIf="item['status']=='stage'">
-                            <app-taskcard [cardData]="employee_data['tasks'][i]">
-                        
-                            </app-taskcard>
-                        </div>
-                
-                    </div>
-                    </div>
-<div class="w-1/5" style="border-right: dotted white 3px ;">
-                        <div class="bg-green-500 w-full rounded-tr-full rounded-br-full
-                            p-3 h-fit-content
-                            ">
-                                Production
-                                
-                            </div>
-                            <div *ngFor="let item of employee_data['tasks'];let i=index">
-                                <div *ngIf="item['status']=='production'">
-                                    <app-taskcard [cardData]="employee_data['tasks'][i]">
-                                
-                                    </app-taskcard>
-                                </div>
-                        
-                            </div>
-                            </div>
+  
+    <div class="w-1/5" style="border-right: dotted white 3px;">
+      <div class="bg-red-500 w-full rounded-tr-full rounded-br-full p-3 h-fit-content">
+        Stage and Tested
+      </div>
+      <div cdkDropList 
+           id="stageList" 
+           (cdkDropListDropped)="drop($event, 'stage')" 
+           [cdkDropListData]="getStageTasks()"
+           [cdkDropListConnectedTo]="['assignedList', 'todoList', 'productionList']">
+           <div *ngIf="getStageTasks().length > 0">
+            <div *ngFor="let item of getStageTasks()" cdkDrag>
+                <app-taskcard [cardData]="item"></app-taskcard>
+              </div>
+           </div>
+           <div *ngIf="getStageTasks().length === 0" class="text-center text-gray-500 mt-2">No tasks assigned.</div>
+
+      </div>
+    </div>
+  
+    <div class="w-1/5" style="border-right: dotted white 3px;">
+      <div class="bg-green-500 w-full rounded-tr-full rounded-br-full p-3 h-fit-content">
+        Production
+      </div>
+      <div cdkDropList 
+           id="productionList" 
+           (cdkDropListDropped)="drop($event, 'production')" 
+           [cdkDropListData]="getProductionTasks()"
+           [cdkDropListConnectedTo]="['assignedList', 'todoList', 'stageList']">
+           <div *ngIf="getProductionTasks().length > 0">
+            <div *ngFor="let item of getProductionTasks()" cdkDrag>
+                <app-taskcard [cardData]="item"></app-taskcard>
+              </div>
+           </div>
+           <div *ngIf="getProductionTasks().length === 0" class="text-center text-gray-500 mt-2">No tasks assigned.</div>
+
+      </div>
+    </div>
   </div>
   
   <div class="overlay" *ngIf="quickTask">
-    <div class="text-xl modal bg-white rounded-xl flex flex-col w-fit-content
-    ">
-      <div class="flex-wrap " style="display: flex;
-      justify-content: space-between;">
-        <label>
-            Task:
-        </label>
-        <input type="text" class="bg-blue-300 flex " [(ngModel)]="addTask.description">
+    <div class="text-xl modal bg-white rounded-xl flex flex-col w-fit-content">
+      <div class="flex-wrap" style="display: flex; justify-content: space-between;">
+        <label>Task:</label>
+        <input type="text" class="bg-blue-300 flex" [(ngModel)]="addTask.description">
       </div>
-      <div class="flex flex-wrap  justify-between">
-        <label>
-            DeadLine:
-        </label>
-        <input type="datetime-local" class="bg-blue-300 flex " [(ngModel)]="addTask.deadline">
+      <div class="flex flex-wrap justify-between">
+        <label>Deadline:</label>
+        <input type="datetime-local" class="bg-blue-300 flex" [(ngModel)]="addTask.deadline">
       </div>
-      <div class="flex flex-wrap  justify-between">
-        <label>
-            Report To:
-        </label>
+      <div class="flex flex-wrap justify-between">
+        <label>Report To:</label>
         <select [(ngModel)]="addTask.reportTo" class="w-3/5">
-            <option>Ramesh</option>
-            <option>Suresh</option>
+          <option>Ramesh</option>
+          <option>Suresh</option>
         </select>
       </div>
       <div class="flex justify-between">
-        <div class="bg-green-400 w-20 p-4 flex justify-center 
-        cursor-pointer
-        rounded-xl" (click)="add()">
-            Add
+        <div class="bg-green-400 w-20 p-4 flex justify-center cursor-pointer rounded-xl" (click)="add()">
+          Add
+        </div>
+        <div class="bg-red-400 w-20 p-4 flex justify-center cursor-pointer rounded-xl" (click)="cancel()">
+          Cancel
+        </div>
       </div>
-      <div class="bg-red-400 w-20 p-4 flex justify-center 
-      cursor-pointer
-      rounded-xl" (click)="cancel()">
-        Cancel
-  </div>
-      </div>
-
     </div>
   </div>
   
