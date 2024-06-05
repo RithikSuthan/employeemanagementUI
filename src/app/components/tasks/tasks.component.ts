@@ -9,6 +9,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class TasksComponent implements OnInit {
 
   quickTask:any;
+  employee_data:any;
   addTask={
     description:"",
     deadline:"",
@@ -20,7 +21,25 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.quickTask=false;
+    this.loadDashboard();
   }
+  loadDashboard=()=>
+    {
+        try
+        {
+            this.employee.fetchTask(localStorage.getItem("uuid")).subscribe(
+              (response)=>
+                {
+                    this.employee_data=response;
+                    console.log(this.employee_data);
+                }
+            );
+        }
+        catch(error)
+        {
+          console.error(error);
+        }
+    }
   quickTaskModel()
   {
       this.quickTask=!this.quickTask;
@@ -33,7 +52,8 @@ export class TasksComponent implements OnInit {
           this.employee.addTask(this.addTask).subscribe(
             (response)=>
               {
-                alert(response);
+                // alert(response);
+                this.ngOnInit();
               }
           )        
       }

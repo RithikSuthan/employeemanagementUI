@@ -1,4 +1,4 @@
-<div style="height: 100vh;" class="text-white font-sans text-xl p-2 task-container w-5/6 flex justify-between flex-row">
+<div style="min-height: 100vh;height: fit-content;" class="text-white font-sans text-xl p-2 task-container w-5/6 flex justify-between flex-row">
 <div class="w-1/5 " style="border-right: dotted white 3px ;">
 <div class="bg-blue-500 w-full rounded-tr-full rounded-br-full
     p-3 h-fit-content
@@ -11,6 +11,14 @@
     " (click)="quickTaskModel()">
         +Quick Task
     </div>
+    <div *ngFor="let item of employee_data['tasks'];let i=index" >
+        <div *ngIf="item['status']=='assigned'">
+            <app-taskcard [cardData]="employee_data['tasks'][i]">
+        
+            </app-taskcard>
+        </div>
+
+    </div>
 </div>
 <div class="w-1/5" style="border-right: dotted white 3px ;">
         <div class="bg-yellow-500 w-full rounded-tr-full rounded-br-full
@@ -19,6 +27,15 @@
                 Today Task
                 
             </div>
+            <div *ngFor="let item of employee_data['tasks'];let i=index">
+                <div *ngIf="item['status']=='todo'">
+                    <app-taskcard [cardData]="employee_data['tasks'][i]">
+                
+                    </app-taskcard>
+                </div>
+        
+            </div>
+            
 </div>
 <div class="w-1/5" style="border-right: dotted white 3px ;">
                 <div class="bg-red-500 w-full rounded-tr-full rounded-br-full
@@ -27,6 +44,14 @@
                         Stage and Tested
                         
                     </div>
+                    <div *ngFor="let item of employee_data['tasks'];let i=index">
+                        <div *ngIf="item['status']=='stage'">
+                            <app-taskcard [cardData]="employee_data['tasks'][i]">
+                        
+                            </app-taskcard>
+                        </div>
+                
+                    </div>
                     </div>
 <div class="w-1/5" style="border-right: dotted white 3px ;">
                         <div class="bg-green-500 w-full rounded-tr-full rounded-br-full
@@ -34,6 +59,14 @@
                             ">
                                 Production
                                 
+                            </div>
+                            <div *ngFor="let item of employee_data['tasks'];let i=index">
+                                <div *ngIf="item['status']=='production'">
+                                    <app-taskcard [cardData]="employee_data['tasks'][i]">
+                                
+                                    </app-taskcard>
+                                </div>
+                        
                             </div>
                             </div>
   </div>
