@@ -20,6 +20,9 @@ export class SidenavComponent implements OnInit {
   signOut()
   {
     document.body.style.overflow="auto";
+    localStorage.removeItem("userName");
+    localStorage.removeItem("name");
+    localStorage.removeItem("company");
     this.router.navigateByUrl("/");
   }
   onMouseEnter()
@@ -41,5 +44,9 @@ export class SidenavComponent implements OnInit {
         ele.style.display="none";
         document.body.style.overflow="auto";
     }
+  }
+  taskPage()
+  {
+    this.router.navigateByUrl("/user");
   }
 }

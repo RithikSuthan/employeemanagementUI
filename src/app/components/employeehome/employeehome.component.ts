@@ -21,6 +21,11 @@ export class EmployeehomeComponent implements OnInit {
   }
   signOut=()=>
     {
+      localStorage.removeItem("company");
+      localStorage.removeItem("uuid");
+      localStorage.removeItem("name");
+      localStorage.removeItem("userName");
+      localStorage.removeItem("creator");
       this.router.navigateByUrl("/");
     }
   taskPop=()=>

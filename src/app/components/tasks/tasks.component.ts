@@ -138,7 +138,7 @@ export class TasksComponent implements OnInit {
       (
         (response)=>
           {
-            this.loadManagers=[];
+            this.loadManagers=[""];
             for(let i=0;i<response.length;i++)
               {
                 this.loadManagers.push(response[i]['employeeName']);

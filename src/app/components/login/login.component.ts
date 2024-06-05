@@ -46,6 +46,8 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('userName',response['userName']);
             localStorage.setItem('name',response['name']);
             localStorage.setItem('company',response['company']);
+            localStorage.setItem('uuid',response['uuid']);
+            localStorage.setItem('creator',response['creator']);
             this.router.navigateByUrl("/home");
           }
           else if(response.message =="Employee Login Success")
