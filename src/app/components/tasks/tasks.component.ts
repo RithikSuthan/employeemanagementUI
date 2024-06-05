@@ -56,6 +56,7 @@ export class TasksComponent implements OnInit {
             {
               // alert(response);
               this.ngOnInit();
+              this.quickTask=false;
             }
         )        
     }
@@ -101,19 +102,29 @@ export class TasksComponent implements OnInit {
   }
 
   getAssignedTasks() {
-    return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'assigned');
+    if (this.employee_data && this.employee_data.tasks && this.employee_data.tasks.length > 0) {
+      return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'assigned');
+    }
+    return [];
   }
+  
 
   getTodoTasks() {
+    if(this.employee_data && this.employee_data.tasks && this.employee_data.tasks.length > 0)
     return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'todo');
+  return [];
   }
 
   getStageTasks() {
+    if(this.employee_data && this.employee_data.tasks && this.employee_data.tasks.length > 0)
     return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'stage');
+  return [];
   }
 
   getProductionTasks() {
+    if(this.employee_data && this.employee_data.tasks && this.employee_data.tasks.length > 0)
     return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'production');
+  return [];
   }
   refreshPage(event:any)
   {

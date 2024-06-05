@@ -106,4 +106,9 @@ export class EmployeeService {
     const url=`${this.employee_service_url}${EndPoints.updateWorkStatus}?uuid=${postObj['uuid']}&taskId=${postObj['taskId']}&workStatus=${status}`;
     return this.http.get(url);
   }
+  deleteTask(postObj:any):Observable<any>
+  {
+    const url=`${this.employee_service_url}${EndPoints.deleteTask}?uuid=${postObj['uuid']}&taskId=${postObj['taskId']}`;
+    return this.http.delete(url);
+  }
 }

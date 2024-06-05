@@ -27,4 +27,19 @@ export class TaskcardComponent implements OnInit {
           console.error(error);
       }
   }
+
+deleteTask(cardData:any)
+{
+    try
+    {
+        this.employee.deleteTask(cardData).subscribe((response)=>{
+          this.refresh.emit(true);
+          console.log(response);
+        });
+    }
+    catch(error)
+    {
+        console.error(error);
+    }
+}
 }
