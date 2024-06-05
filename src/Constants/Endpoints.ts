@@ -15,4 +15,5 @@ export class EndPoints {
     public static addTask="/addTask";
     public static fetchTask="/fetchTask";
     public static updateStatus="/updateStatus";
+    public static updateWorkStatus="/updateWorkStatus";
 }

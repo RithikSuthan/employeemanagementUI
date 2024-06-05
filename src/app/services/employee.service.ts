@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { EndPoints } from 'src/Constants/Endpoints';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +11,7 @@ export class EmployeeService {
 
   employee_service_url:any;
   email_service_url:any;
+
   constructor(private http:HttpClient) {
     this.employee_service_url=environment.employee_service_url;
     this.email_service_url=environment.email_service_url;
@@ -97,6 +99,11 @@ export class EmployeeService {
   updateStatus(postObj:any):Observable<any>
   {
     const url=`${this.employee_service_url}${EndPoints.updateStatus}?uuid=${postObj['uuid']}&taskId=${postObj['taskId']}&status=${postObj['status']}`;
+    return this.http.get(url);
+  }
+  updateWorkStatus(postObj:any,status:any):Observable<any>
+  {
+    const url=`${this.employee_service_url}${EndPoints.updateWorkStatus}?uuid=${postObj['uuid']}&taskId=${postObj['taskId']}&workStatus=${status}`;
     return this.http.get(url);
   }
 }

@@ -115,4 +115,8 @@ export class TasksComponent implements OnInit {
   getProductionTasks() {
     return this.employee_data.tasks.filter((task: { status: string; }) => task.status === 'production');
   }
+  refreshPage(event:any)
+  {
+    this.ngOnInit();
+  }
 }

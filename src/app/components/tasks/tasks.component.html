@@ -13,7 +13,7 @@
            [cdkDropListConnectedTo]="['todoList', 'stageList', 'productionList']">
         <div *ngIf="getAssignedTasks().length > 0">
           <div *ngFor="let item of getAssignedTasks()" cdkDrag>
-            <app-taskcard [cardData]="item"></app-taskcard>
+            <app-taskcard [cardData]="item" (refresh)="refreshPage($event)"></app-taskcard>
           </div>
         </div>
         <div *ngIf="getAssignedTasks().length === 0" class="text-center text-gray-700 mt-2">No tasks assigned.</div>
@@ -31,7 +31,7 @@
            [cdkDropListConnectedTo]="['assignedList', 'stageList', 'productionList']">
         <div *ngIf="getTodoTasks().length > 0">
           <div *ngFor="let item of getTodoTasks()" cdkDrag>
-            <app-taskcard [cardData]="item"></app-taskcard>
+            <app-taskcard [cardData]="item" (refresh)="refreshPage($event)"></app-taskcard>
           </div>
         </div>
         <div *ngIf="getTodoTasks().length === 0" class="text-center text-gray-700 mt-2">No tasks for today.</div>
@@ -49,7 +49,7 @@
            [cdkDropListConnectedTo]="['assignedList', 'todoList', 'productionList']">
         <div *ngIf="getStageTasks().length > 0">
           <div *ngFor="let item of getStageTasks()" cdkDrag>
-            <app-taskcard [cardData]="item"></app-taskcard>
+            <app-taskcard [cardData]="item" (refresh)="refreshPage($event)"></app-taskcard>
           </div>
         </div>
         <div *ngIf="getStageTasks().length === 0" class="text-center text-gray-700 mt-2">No staged tasks.</div>
@@ -67,7 +67,7 @@
            [cdkDropListConnectedTo]="['assignedList', 'todoList', 'stageList']">
         <div *ngIf="getProductionTasks().length > 0">
           <div *ngFor="let item of getProductionTasks()" cdkDrag>
-            <app-taskcard [cardData]="item"></app-taskcard>
+            <app-taskcard [cardData]="item" (refresh)="refreshPage($event)"></app-taskcard>
           </div>
         </div>
         <div *ngIf="getProductionTasks().length === 0" class="text-center text-gray-700 mt-2">No production tasks.</div>
