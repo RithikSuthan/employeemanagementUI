@@ -111,4 +111,11 @@ export class EmployeeService {
     const url=`${this.employee_service_url}${EndPoints.deleteTask}?uuid=${postObj['uuid']}&taskId=${postObj['taskId']}`;
     return this.http.delete(url);
   }
+  fetchManagersEmployee():Observable<any>
+  {
+    const url = `${this.employee_service_url}${EndPoints.fetchManager}?company=${localStorage.getItem("company")}&creator=${localStorage.getItem("creator")}`;
+
+    return this.http.get<any>(url);
+  }
+  
 }

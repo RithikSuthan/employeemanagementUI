@@ -10,6 +10,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class TasksComponent implements OnInit {
 
   quickTask: boolean = false;
+  loadManagers:any;
   employee_data: any = {
     tasks: []
   };
@@ -25,6 +26,7 @@ export class TasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadDashboard();
+    this.fetchManagers();
   }
 
   loadDashboard() {
@@ -129,5 +131,24 @@ export class TasksComponent implements OnInit {
   refreshPage(event:any)
   {
     this.ngOnInit();
+  }
+  fetchManagers()
+  {
+      this.employee.fetchManagersEmployee().subscribe
+      (
+        (response)=>
+          {
+            this.loadManagers=[];
+            for(let i=0;i<response.length;i++)
+              {
+                this.loadManagers.push(response[i]['employeeName']);
+              }
+            console.log(response);
+          },
+          (error)=>
+            {
+              console.log(error);
+            }
+      )
   }
 }

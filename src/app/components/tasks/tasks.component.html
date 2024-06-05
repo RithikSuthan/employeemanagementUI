@@ -88,8 +88,7 @@
       <div class="flex flex-wrap justify-between">
         <label>Report To:</label>
         <select [(ngModel)]="addTask.reportTo" class="w-3/5">
-          <option>Ramesh</option>
-          <option>Suresh</option>
+          <option *ngFor="let item of loadManagers" [value]="item">{{item}}</option>
         </select>
       </div>
       <div class="flex justify-between">
