@@ -16,7 +16,7 @@
             <app-taskcard [cardData]="item"></app-taskcard>
           </div>
         </div>
-        <div *ngIf="getAssignedTasks().length === 0" class="text-center text-gray-500 mt-2">No tasks assigned.</div>
+        <div *ngIf="getAssignedTasks().length === 0" class="text-center text-gray-700 mt-2">No tasks assigned.</div>
       </div>
     </div>
   
@@ -34,7 +34,7 @@
             <app-taskcard [cardData]="item"></app-taskcard>
           </div>
         </div>
-        <div *ngIf="getTodoTasks().length === 0" class="text-center text-gray-500 mt-2">No tasks for today.</div>
+        <div *ngIf="getTodoTasks().length === 0" class="text-center text-gray-700 mt-2">No tasks for today.</div>
       </div>
     </div>
   
@@ -52,7 +52,7 @@
             <app-taskcard [cardData]="item"></app-taskcard>
           </div>
         </div>
-        <div *ngIf="getStageTasks().length === 0" class="text-center text-gray-500 mt-2">No staged tasks.</div>
+        <div *ngIf="getStageTasks().length === 0" class="text-center text-gray-700 mt-2">No staged tasks.</div>
       </div>
     </div>
   
@@ -70,7 +70,7 @@
             <app-taskcard [cardData]="item"></app-taskcard>
           </div>
         </div>
-        <div *ngIf="getProductionTasks().length === 0" class="text-center text-gray-500 mt-2">No production tasks.</div>
+        <div *ngIf="getProductionTasks().length === 0" class="text-center text-gray-700 mt-2">No production tasks.</div>
       </div>
     </div>
   </div>

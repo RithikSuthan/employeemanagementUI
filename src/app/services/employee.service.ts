@@ -94,4 +94,9 @@ export class EmployeeService {
     const url=`${this.employee_service_url}${EndPoints.fetchTask}?uuid=${uuid}`;
     return this.http.get(url);
   }
+  updateStatus(postObj:any):Observable<any>
+  {
+    const url=`${this.employee_service_url}${EndPoints.updateStatus}?uuid=${postObj['uuid']}&taskId=${postObj['taskId']}&status=${postObj['status']}`;
+    return this.http.get(url);
+  }
 }

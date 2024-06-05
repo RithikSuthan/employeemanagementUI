@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-tasks',
@@ -20,22 +21,27 @@ export class TasksComponent implements OnInit {
     uuid: localStorage.getItem("uuid")
   };
 
-  constructor() { }
+  constructor(private employee:EmployeeService) { }
 
   ngOnInit(): void {
     this.loadDashboard();
   }
 
   loadDashboard() {
-    // Simulating fetching data. Replace this with actual data fetching.
-    this.employee_data = {
-      tasks: [
-        { id: 1, status: 'assigned', description: 'Task 1' },
-        { id: 2, status: 'todo', description: 'Task 2' },
-        { id: 3, status: 'stage', description: 'Task 3' },
-        { id: 4, status: 'production', description: 'Task 4' }
-      ]
-    };
+      try
+      {
+          this.employee.fetchTask(localStorage.getItem("uuid")).subscribe(
+            (response)=>
+              {
+                  this.employee_data=response;
+                  console.log(this.employee_data);
+              }
+          );
+      }
+      catch(error)
+      {
+        console.error(error);
+      }
   }
 
   quickTaskModel() {
@@ -43,8 +49,20 @@ export class TasksComponent implements OnInit {
   }
 
   add() {
-    this.employee_data.tasks.push({ ...this.addTask, status: 'assigned' });
-    this.quickTask = false;
+    try
+    {
+        this.employee.addTask(this.addTask).subscribe(
+          (response)=>
+            {
+              // alert(response);
+              this.ngOnInit();
+            }
+        )        
+    }
+    catch(error)
+    {
+      console.error(error);
+    }
   }
 
   cancel() {
@@ -61,8 +79,25 @@ export class TasksComponent implements OnInit {
         event.previousIndex,
         event.currentIndex
       );
-      event.container.data[event.currentIndex].status = newStatus;
+      const movedTask = event.container.data[event.currentIndex];
+      movedTask.status = newStatus;
+      this.updateTaskStatus(movedTask);
     }
+  }
+  updateTaskStatus(taskMove:any)
+  {
+      try
+      {
+          this.employee.updateStatus(taskMove).subscribe((response)=>
+          {
+            console.log(response);
+            this.ngOnInit();
+          })
+      }
+      catch(error)
+      {
+        console.error(error);
+      }
   }
 
   getAssignedTasks() {

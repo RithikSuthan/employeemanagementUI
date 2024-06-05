@@ -13,5 +13,6 @@ export class EndPoints {
     public static sendIdCard="/sendidcard";
     public static leaveRequest="/leave";
     public static addTask="/addTask";
-    public static fetchTask="/fetchTask"
+    public static fetchTask="/fetchTask";
+    public static updateStatus="/updateStatus";
 }
