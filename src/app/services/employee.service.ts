@@ -117,5 +117,10 @@ export class EmployeeService {
 
     return this.http.get<any>(url);
   }
+  managerEmployee(uuid:any):Observable<any>
+  {
+    const url=`${this.employee_service_url}${EndPoints.managerEmployee}?uuid=${uuid}`;
+    return this.http.get(url);
+  }
   
 }

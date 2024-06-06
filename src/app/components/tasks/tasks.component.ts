@@ -11,6 +11,7 @@ export class TasksComponent implements OnInit {
 
   quickTask: boolean = false;
   loadManagers:any;
+  loadManagerEmployees:any;
   employee_data: any = {
     tasks: []
   };
@@ -28,7 +29,27 @@ export class TasksComponent implements OnInit {
     this.loadDashboard();
     this.fetchManagers();
   }
-
+  dropDown(event:any)
+  {
+      alert(event.target.value);
+  }
+fetchManagerEmployee()
+{
+  try
+      {
+          this.employee.managerEmployee(localStorage.getItem("uuid")).subscribe(
+            (response)=>
+              {
+                  this.loadManagerEmployees=response;
+                  console.log(this.loadManagerEmployees);
+              }
+          );
+      }
+      catch(error)
+      {
+        console.error(error);
+      }
+}
   loadDashboard() {
       try
       {
@@ -37,6 +58,10 @@ export class TasksComponent implements OnInit {
               {
                   this.employee_data=response;
                   console.log(this.employee_data);
+                  if (this.employee_data['position']==='Manager' || this.employee_data['position']==='HR' ||this.employee_data['position']==='Team Leader' )
+                    {
+                      this.fetchManagerEmployee();
+                    }
               }
           );
       }

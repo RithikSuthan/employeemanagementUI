@@ -1,4 +1,14 @@
-<div style="min-height: 100vh;height: fit-content;" class="text-white font-sans text-xl p-2 task-container w-5/6 flex justify-between flex-row">
+<div class="flex flex-row justify-end p-3 task-container" *ngIf="this.loadManagerEmployees && this.loadManagerEmployees.length>0">
+  <label class="p-2 text-xl font-sans">
+    Employee:
+  </label>
+  <select type="text" class="bg-gray-400 p-3 w-fit-content" (change)="dropDown($event)">
+    <option></option>
+  <option *ngFor="let item of loadManagerEmployees">
+      {{item['employeeName']}}
+  </option></select>
+</div>
+<div style="min-height: 100vh;height: fit-content;border-top: 4px solid whitesmoke;" class="text-white font-sans text-xl p-2 task-container w-5/6 flex justify-between flex-row">
     <div class="w-1/5" style="border-right: dotted white 3px;">
       <div class="bg-blue-500 w-full rounded-tr-full rounded-br-full p-3 h-fit-content">
         New Tasks
