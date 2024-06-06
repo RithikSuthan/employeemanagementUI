@@ -89,15 +89,17 @@
     <div class="text-xl modal bg-white rounded-xl flex flex-col w-fit-content">
       <div class="flex-wrap" style="display: flex; justify-content: space-between;">
         <label>Task:</label>
-        <input type="text" class="bg-blue-300 flex" [(ngModel)]="addTask.description">
+        <input type="text" class="bg-blue-300 flex" [(ngModel)]="addTask.description" required>
       </div>
       <div class="flex flex-wrap justify-between">
         <label>Deadline:</label>
-        <input type="datetime-local" class="bg-blue-300 flex" [(ngModel)]="addTask.deadline">
+        <input type="datetime-local" class="bg-blue-300 flex" [(ngModel)]="addTask.deadline" 
+        [min]="minDateTime" required
+        >
       </div>
       <div class="flex flex-wrap justify-between">
         <label>Report To:</label>
-        <select [(ngModel)]="addTask.reportTo" class="w-3/5">
+        <select [(ngModel)]="addTask.reportTo" class="w-3/5" required>
           <option *ngFor="let item of loadManagers" [value]="item">{{item}}</option>
         </select>
       </div>
