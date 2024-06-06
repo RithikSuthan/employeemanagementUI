@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { EmployeeService } from 'src/app/services/employee.service';
 
@@ -12,6 +12,7 @@ export class TasksComponent implements OnInit {
   quickTask: boolean = false;
   loadManagers:any;
   loadManagerEmployees:any;
+  backupManagerTask:any;
   employee_data: any = {
     tasks: []
   };
@@ -23,7 +24,9 @@ export class TasksComponent implements OnInit {
     uuid: localStorage.getItem("uuid")
   };
 
-  constructor(private employee:EmployeeService) { }
+  constructor(private employee:EmployeeService
+    ,private cdr:ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     this.loadDashboard();
@@ -31,7 +34,29 @@ export class TasksComponent implements OnInit {
   }
   dropDown(event:any)
   {
-      alert(event.target.value);
+    if(event.target.value ==="")
+    {
+        this.employee_data.tasks=this.backupManagerTask;
+    }
+    else
+    {
+      for(let i=0;i<this.loadManagerEmployees.length;i++)
+        {
+          if (this.loadManagerEmployees[i].employeeName===event.target.value)
+            {
+              this.employee_data.tasks=[]
+              console.log(this.employee_data);
+              // alert("emptied");
+              for(let j=0;j<this.loadManagerEmployees[i].tasks.length;j++)
+                {
+                  this.employee_data.tasks.push(this.loadManagerEmployees[i].tasks[j]);
+                }
+                console.log(this.employee_data);
+                this.cdr.detectChanges();
+            }
+        }
+    }
+    
   }
 fetchManagerEmployee()
 {
@@ -57,6 +82,7 @@ fetchManagerEmployee()
             (response)=>
               {
                   this.employee_data=response;
+                  this.backupManagerTask=response.tasks;
                   console.log(this.employee_data);
                   if (this.employee_data['position']==='Manager' || this.employee_data['position']==='HR' ||this.employee_data['position']==='Team Leader' )
                     {
