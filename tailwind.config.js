@@ -26,6 +26,7 @@ module.exports = {
         'fit-content': 'fit-content',
       }
     },
+
   },
   variants: {
     extend: {},
