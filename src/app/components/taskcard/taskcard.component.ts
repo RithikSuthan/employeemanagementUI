@@ -9,7 +9,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class TaskcardComponent implements OnInit {
   @Input() cardData:any;
   @Output() refresh=new EventEmitter();
-  constructor(private employee:EmployeeService) { }
+  constructor(private employee:EmployeeService) { } 
 
   ngOnInit(): void {
   }
