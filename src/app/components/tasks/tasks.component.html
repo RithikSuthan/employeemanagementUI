@@ -1,4 +1,4 @@
-<div class="flex flex-row justify-end p-3 task-container" *ngIf="this.loadManagerEmployees && this.loadManagerEmployees.length>0">
+<!-- <div class="flex flex-row justify-end p-3 task-container" *ngIf="this.loadManagerEmployees && this.loadManagerEmployees.length>0">
   <label class="p-2 text-xl font-sans">
     Employee:
   </label>
@@ -113,4 +113,106 @@
       </div>
     </div>
   </div>
+   -->
+
+  
+  <div class="flex flex-row justify-end p-3 task-container" *ngIf="loadManagerEmployees && loadManagerEmployees.length > 0">
+    <label class="p-2 text-xl font-sans">
+      Employee:
+    </label>
+    <select type="text" class="bg-gray-400 p-3 rounded-md ml-2">
+      <option></option>
+      <option *ngFor="let item of loadManagerEmployees">
+        {{ item.employeeName }}
+      </option>
+    </select>
+  </div>
+  
+  <div class="task-container text-white font-sans text-xl p-2 w-full flex flex-wrap justify-between" style="min-height: calc(100vh - 4rem); border-top: 4px solid whitesmoke;">
+    <div class="task-column w-full md:w-1/4 px-4">
+      <div class="bg-blue-500 w-full rounded-t-lg p-3 text-center text-white">
+        New Tasks
+      </div>
+      <div class="w-full cursor-pointer bg-gray-300 flex justify-center rounded-lg p-3 mt-2 text-center" (click)="quickTaskModel()">
+        + Quick Task
+      </div>
+      <div cdkDropList id="assignedList" (cdkDropListDropped)="drop($event, 'assigned')" [cdkDropListData]="getAssignedTasks()" [cdkDropListConnectedTo]="['todoList', 'stageList', 'productionList']" class="border-gray-300 border-4 border-dashed mt-4 p-2 rounded-lg">
+        <div *ngIf="getAssignedTasks().length > 0">
+          <div *ngFor="let item of getAssignedTasks()" cdkDrag>
+            <app-taskcard [cardData]="item" (refresh)="refreshPage($event)"></app-taskcard>
+          </div>
+        </div>
+        <div *ngIf="getAssignedTasks().length === 0" class="text-center text-gray-700 mt-2">No tasks assigned.</div>
+      </div>
+    </div>
+  
+    <div class="task-column w-full md:w-1/4 px-4 mt-4 md:mt-0">
+      <div class="bg-yellow-500 w-full rounded-t-lg p-3 text-center text-white">
+        Today's Tasks
+      </div>
+      <div cdkDropList id="todoList" (cdkDropListDropped)="drop($event, 'todo')" [cdkDropListData]="getTodoTasks()" [cdkDropListConnectedTo]="['assignedList', 'stageList', 'productionList']" class="border-gray-300 border-4 border-dashed mt-4 p-2 rounded-lg">
+        <div *ngIf="getTodoTasks().length > 0">
+          <div *ngFor="let item of getTodoTasks()" cdkDrag>
+            <app-taskcard [cardData]="item" (refresh)="refreshPage($event)"></app-taskcard>
+          </div>
+        </div>
+        <div *ngIf="getTodoTasks().length === 0" class="text-center text-gray-700 mt-2">No tasks for today.</div>
+      </div>
+    </div>
+  
+    <div class="task-column w-full md:w-1/4 px-4 mt-4 md:mt-0">
+      <div class="bg-red-500 w-full rounded-t-lg p-3 text-center text-white">
+        Stage and Tested
+      </div>
+      <div cdkDropList id="stageList" (cdkDropListDropped)="drop($event, 'stage')" [cdkDropListData]="getStageTasks()" [cdkDropListConnectedTo]="['assignedList', 'todoList', 'productionList']" class="border-gray-300 border-4 border-dashed mt-4 p-2 rounded-lg">
+        <div *ngIf="getStageTasks().length > 0">
+          <div *ngFor="let item of getStageTasks()" cdkDrag>
+            <app-taskcard [cardData]="item" (refresh)="refreshPage($event)"></app-taskcard>
+          </div>
+        </div>
+        <div *ngIf="getStageTasks().length === 0" class="text-center text-gray-700 mt-2">No staged tasks.</div>
+      </div>
+    </div>
+  
+    <div class="task-column w-full md:w-1/4 px-4 mt-4 md:mt-0">
+      <div class="bg-green-500 w-full rounded-t-lg p-3 text-center text-white">
+        Production
+      </div>
+      <div cdkDropList id="productionList" (cdkDropListDropped)="drop($event, 'production')" [cdkDropListData]="getProductionTasks()" [cdkDropListConnectedTo]="['assignedList', 'todoList', 'stageList']" class="border-gray-300 border-4 border-dashed mt-4 p-2 rounded-lg">
+        <div *ngIf="getProductionTasks().length > 0">
+          <div *ngFor="let item of getProductionTasks()" cdkDrag>
+            <app-taskcard [cardData]="item" (refresh)="refreshPage($event)"></app-taskcard>
+          </div>
+        </div>
+        <div *ngIf="getProductionTasks().length === 0" class="text-center text-gray-700 mt-2">No production tasks.</div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="overlay fixed inset-0 bg-black opacity-50 z-50" *ngIf="quickTask"></div>
+  
+  <div class="modal fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg p-4 z-50" *ngIf="quickTask">
+    <div class="flex flex-col gap-4">
+      <div class="flex justify-between items-center">
+        <label class="text-lg font-bold">New Task</label>
+        <button class="text-red-500 hover:text-red-700" (click)="cancel()">Close</button>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label>Description:</label>
+        <input type="text" class="p-2 border border-gray-300 rounded-md" [(ngModel)]="addTask.description" required>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label>Deadline:</label>
+        <input type="datetime-local" class="p-2 border border-gray-300 rounded-md" [(ngModel)]="addTask.deadline" [min]="minDateTime" required>
+      </div>
+      <div class="flex flex-col gap-2">
+        <label>Report To:</label>
+        <select [(ngModel)]="addTask.reportTo" class="p-2 border border-gray-300 rounded-md">
+          <option *ngFor="let item of loadManagers" [value]="item">{{ item }}</option>
+        </select>
+      </div>
+      <button class="bg-green-500 hover:bg-green-600 text-white rounded-md py-2" (click)="add()">Add Task</button>
+    </div>
+  </div>
+  
   
