@@ -30,14 +30,13 @@
             </div>
     </div>
 </div> -->
-<div class="w-4/5 overflow-y-auto rounded-lg" style="height:fit-content;margin-left: 10%;z-index: 0;">
+<!-- <div class="w-4/5 overflow-y-auto rounded-lg" style="height:fit-content;margin-left: 10%;z-index: 0;">
     <div class="flex w-full justify-end">
 
         <div class="bg-green-500 md:w-1/4 p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center w-fit z-50" (click)="addModel()">Add Employee</div>
     </div>
 
     <div class="flex flex-col w-full md:text-2xl text-l">
-        <!-- Table Headers (only visible on larger screens) -->
         <div class="hidden md:flex bg-gray-400 flex-row p-5 font-bold text-white justify-evenly text-center">
             <div class="w-1/6 whitespace-normal">Photo</div>
             <div class="w-1/6 whitespace-normal">Name</div>
@@ -48,12 +47,9 @@
             <div class="w-1/6 whitespace-normal">Operation</div>
         </div>
         
-        <!-- Table Rows -->
+        
         <ng-container *ngFor="let item of dashboardData">
             <div class="border-b-4 flex flex-col md:flex-row justify-between whitespace-normal p-4">
-                <!-- <div class="w-full md:w-1/6 items-center flex justify-center">
-                    <img [src]="item['profileImage'] ? item['profileImage'] : '../../../../../assets/noPhoto.jpg'" alt="Photo Unavailable" class="w-15 h-15">
-                </div> -->
                 <div class="w-full md:w-1/6 items-center flex justify-center">
                     <img [src]="item['profileImage'] ? item['profileImage'] : '../../../../../assets/noPhoto.jpg'" alt="Photo Unavailable" class="w-15 h-15">
                 </div>
@@ -86,7 +82,58 @@
     
 
     
+</div> -->
+
+
+
+<div class="w-full md:w-4/5 mx-auto mt-10 bg-white shadow-lg rounded-lg">
+
+    <!-- Header -->
+    <div class="flex justify-end p-4">
+        <div class="bg-green-500 px-6 py-3 rounded-md text-white font-bold cursor-pointer hover:bg-green-600" (click)="addModel()">Add Employee</div>
+    </div>
+
+    <!-- Table -->
+    <div class="flex flex-col">
+        <!-- Table Headers (visible on larger screens) -->
+        <div class="hidden md:flex bg-gray-800 text-white font-bold p-4">
+            <div class="w-1/6">Photo</div>
+            <div class="w-1/6">Name</div>
+            <div class="w-1/6">Position</div>
+            <div class="w-1/6">Phone Number</div>
+            <div class="w-1/4">Email Id</div>
+            <div class="w-1/4">Manager In Charge</div>
+            <div class="w-1/6">Operation</div>
+        </div>
+
+        <!-- Table Rows -->
+        <ng-container *ngFor="let item of dashboardData; let index = index">
+            <div class="border-b border-gray-200 flex flex-col md:flex-row items-center p-4"
+                [ngClass]="{
+                    'bg-gray-100': index % 2 === 0,
+                    'bg-white': index % 2 !== 0
+                }">
+                <div class="w-full md:w-1/6 flex justify-center mb-4 md:mb-0">
+                    <img [src]="item['profileImage'] ? item['profileImage'] : 'assets/noPhoto.jpg'" alt="Photo Unavailable" class="w-16 h-16 rounded-full">
+                </div>
+                <div class="w-full md:w-1/6 font-bold text-center mb-4 md:mb-0">{{ item['employeeName'] }}</div>
+                <div class="w-full md:w-1/6 text-center mb-4 md:mb-0">{{ item['position'] ? item['position'] : 'NA' }}</div>
+                <div class="w-full md:w-1/6 text-center mb-4 md:mb-0">{{ item['phoneNumber'] }}</div>
+                <div class="w-full md:w-1/4 text-center mb-4 md:mb-0">{{ item['email'] }}</div>
+                <div class="w-full md:w-1/4 text-gray-500 text-center mb-4 md:mb-0">{{ item['manager'] ? item['manager'] : 'NA' }}</div>
+                <div class="w-full md:w-1/6 flex justify-around">
+                    <div class="bg-blue-500 px-4 py-2 rounded-md text-white cursor-pointer hover:bg-blue-600 mb-2 md:mb-0" (click)="editFetchEmployee(item['uuid'])">Edit</div>
+                    <div class="bg-red-500 px-4 py-2 rounded-md text-white cursor-pointer hover:bg-red-600 mb-2 md:mb-0" (click)="delete(item['uuid'])">Delete</div>
+                    <div class="bg-green-500 px-4 py-2 rounded-md text-white cursor-pointer hover:bg-green-600 mb-2 md:mb-0" (click)="generateId(item['uuid'])">ID</div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
 </div>
+
+
+
+
 
 
 
