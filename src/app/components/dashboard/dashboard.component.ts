@@ -45,8 +45,33 @@ export class DashboardComponent implements OnInit {
     this.popAddModle=false;
     this.popEditModel=false;
     this.idModel=false;
+    this.resetPostObj();
+    this.resetEditObj();
   }
-  
+  resetPostObj() {
+    this.postObj = {
+      employeeName: '',
+      email: '',
+      phoneNumber: '',
+      profileImage: '',
+      reportsTo: '',
+      position: '',
+      company: localStorage.getItem('company'),
+      creator: localStorage.getItem('name')
+    };
+  }
+  resetEditObj() {
+    this.editObj = {
+      employeeName: '',
+      email: '',
+      phoneNumber: '',
+      profileImage: '',
+      reportsTo: '',
+      position: '',
+      company: localStorage.getItem('company'),
+      creator: localStorage.getItem('name')
+    };
+  }
   fetchManagers()
   {
       this.employee.fetchManagers().subscribe
@@ -81,12 +106,12 @@ export class DashboardComponent implements OnInit {
 addModel()
 {
     this.popAddModle=!this.popAddModle;
-    document.body.style.overflow='hidden';
+    // document.body.style.overflow='hidden';
 }
 close()
 {
   this.popAddModle=!this.popAddModle;
-  document.body.style.overflow='auto';
+  // document.body.style.overflow='auto';
 }
 addEmployee()
 {
@@ -97,7 +122,7 @@ addEmployee()
         setTimeout(()=>
           {
               this.ngOnInit();
-          },5000)
+          },1000)
     },
     (error)=>
     {
@@ -128,7 +153,7 @@ delete(uuid:any)
           setTimeout(()=>
             {
                 this.ngOnInit();
-            },5000)
+            },1000)
       },
       (error)=>
         {
@@ -142,7 +167,7 @@ delete(uuid:any)
 closeEdit()
 {
   this.popEditModel=!this.popEditModel;
-  document.body.style.overflow='auto';
+  // document.body.style.overflow='auto';
 }
 editFetchEmployee(uuid:any)
 {
@@ -151,8 +176,9 @@ editFetchEmployee(uuid:any)
         {
           console.log(response);
           this.popEditModel=true;
-          document.body.style.overflow="hidden";
+          // document.body.style.overflow="hidden";
           this.editObj=response;
+          console.log(response)
           
         },
         (error)=>
@@ -170,7 +196,7 @@ editEmployee()
               setTimeout(()=>
   {
       this.ngOnInit();
-  },5000)
+  },1000)
         },
         (error)=>
           {
@@ -199,12 +225,12 @@ generateId(uuid:any)
 {
   this.idModel=true;
   this.idUUID=uuid;
-  document.body.style.overflow='hidden';
+  // document.body.style.overflow='hidden';
 }
 close1()
 {
   this.idModel=false;
-  document.body.style.overflow='auto';
+  // document.body.style.overflow='auto';
 }
 onFileSelected(event: any) {
   const file: File = event.target.files[0];
