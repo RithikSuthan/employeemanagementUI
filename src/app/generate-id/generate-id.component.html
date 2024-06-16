@@ -74,8 +74,8 @@
 
 </div> -->
 
-<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
-    <div class="bg-white w-80 rounded-lg p-4 shadow-lg">
+<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50" *ngIf="loadObject">
+    <div class="bg-white w-80 rounded-lg p-4 shadow-lg" id="id-card-container">
         <!-- Close Button -->
         <div class="flex justify-end mb-4">
             <div class="bg-red-500 hover:bg-red-600 text-white p-2 rounded-full cursor-pointer" (click)="close()">
@@ -84,26 +84,18 @@
                 </svg>
             </div>
         </div>
-
-        <!-- Logo -->
         <div class="flex justify-center mb-4">
             <img src="../../assets/logo.JPG" class="w-24">
         </div>
-
-        <!-- Photo -->
         <div class="flex justify-center mb-4">
             <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-300">
                 <img [src]="loadObject['profileImage']" alt="Photo Unavailable" class="w-full h-full object-cover">
             </div>
         </div>
-
-        <!-- Employee Details -->
         <div class="text-center mb-4">
             <div class="text-xl font-bold text-gray-800">{{ loadObject['employeeName'] }}</div>
             <div class="text-sm text-gray-600">{{ loadObject['position'] }}</div>
         </div>
-
-        <!-- Contact Information -->
         <div class="text-center mb-4">
             <div class="flex justify-center items-center mb-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
@@ -118,8 +110,6 @@
                 <div class="text-sm text-gray-700">{{ loadObject['phoneNumber'] }}</div>
             </div>
         </div>
-
-        <!-- Save PDF Button -->
         <div class="flex justify-center">
             <div class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-xl cursor-pointer" (click)="saveAsPDF()">
                 Save PDF

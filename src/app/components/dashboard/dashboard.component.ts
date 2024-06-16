@@ -239,7 +239,6 @@ onFileSelected(event: any) {
     reader.readAsDataURL(file);
     reader.onload = () => {
       const base64Image: string = reader.result as string;
-      console.log(base64Image); // This will log the base64-encoded string
       // You can then share this base64-encoded string as needed
       this.postObj['profileImage']=base64Image;
     };
