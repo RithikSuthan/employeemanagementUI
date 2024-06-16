@@ -36,7 +36,7 @@ export class TasksComponent implements OnInit {
   }
   dropDown(event:any)
   {
-    if(event.target.value ==="")
+    if(event.target.value ==="My Tasks")
     {
         this.employee_data.tasks=this.backupManagerTask;
     }
