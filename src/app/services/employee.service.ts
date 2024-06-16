@@ -122,5 +122,9 @@ export class EmployeeService {
     const url=`${this.employee_service_url}${EndPoints.managerEmployee}?uuid=${uuid}`;
     return this.http.get(url);
   }
-  
+  changePassword(postObj:any):Observable<any>
+  {
+    const url=`${this.employee_service_url}${EndPoints.changePassword}`;
+    return this.http.post(url,postObj);
+  }
 }

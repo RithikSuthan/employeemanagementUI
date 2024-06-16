@@ -18,4 +18,5 @@ export class EndPoints {
     public static updateWorkStatus="/updateWorkStatus";
     public static deleteTask="/deleteTask";
     public static managerEmployee="/managerEmployee";
+    public static changePassword="/changePassword";
 }
