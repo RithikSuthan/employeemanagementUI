@@ -1,0 +1,66 @@
+.chatbot-icon {
+    position: fixed;
+    bottom: 80px; /* Adjust this value to ensure it is just above the footer */
+    right: 20px; /* Adjust this value for the desired right margin */
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+.chatbot-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 150px; /* Adjust this value to ensure it does not overlap with the footer */
+    right: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1001; /* Ensure it is above the chatbot icon */
+    background-color: white;
+}
+
+.chat-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    cursor: pointer;
+}
+
+.chat-popup iframe {
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* Media Query for mobile devices */
+@media screen and (max-width: 600px) {
+    .chatbot-icon {
+        bottom: 60px; /* Adjust for mobile view */
+        right: 10px; /* Adjust for mobile view */
+        width: 40px; /* Reduce size for mobile view */
+        height: 40px; /* Reduce size for mobile view */
+    }
+    .chat-popup {
+        bottom: 120px; /* Adjust for mobile view */
+        right: 10px; /* Adjust for mobile view */
+        width: 90%; /* Adjust width for mobile view */
+    }
+    .chat-popup iframe {
+        width: 100%; /* Adjust iframe width for mobile view */
+        height: 350px; /* Adjust iframe height for mobile view */
+    }
+}

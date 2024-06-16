@@ -18,6 +18,7 @@ import { LeaveComponent } from './components/leave/leave.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskcardComponent } from './components/taskcard/taskcard.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     EmployeehomeComponent,
     LeaveComponent,
     TasksComponent,
-    TaskcardComponent
+    TaskcardComponent,
+    ChatbotComponent
   ],
   imports: [
     BrowserModule,
