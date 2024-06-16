@@ -38,7 +38,7 @@
 
 
 
-<div style="background-color: white;top:8%;z-index: 50;left:5%;padding: 1%;" 
+<!-- <div style="background-color: white;top:8%;z-index: 50;left:5%;padding: 1%;" 
  class=" w-80 rounded-lg top-1/5 md:ml-1/5 ml-1/12  fixed md:text-2xl overflow-y-auto">
  <div class=" flex  justify-end">
     <div class="bg-red-500 w-fit-content p-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="close()">X</div>
@@ -47,13 +47,6 @@
     <div class="mt-4 flex flex-row w-28">
         <img src="../../assets/logo.JPG">
     </div>
-    <!-- <div class="mt-4 flex flex-col">
-        <img src="../../assets/logo.JPG">
-    </div>
-    
-    <div class="mt-4 flex flex-col items-center">
-        <img [src]="loadObject['profileImage']" alt="Photo Unavailable" class="w-32 h-32 rounded-full border-gray-400">
-    </div> -->
     
     <div class="mt-4 flex flex-row w-36">
         <img [src]="loadObject['profileImage']" alt="Photo Unavailable" class="w-28 rounded-full border-gray-400">
@@ -79,4 +72,59 @@
     <div class="bg-green-500 w-fit-content p-3 m-3 rounded-md text-center font-bold text-xl cursor-pointer flex justify-center" (click)="saveAsPDF()">Save PDF</div>
 </div>
 
+</div> -->
+
+<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 z-50">
+    <div class="bg-white w-80 rounded-lg p-4 shadow-lg">
+        <!-- Close Button -->
+        <div class="flex justify-end mb-4">
+            <div class="bg-red-500 hover:bg-red-600 text-white p-2 rounded-full cursor-pointer" (click)="close()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Logo -->
+        <div class="flex justify-center mb-4">
+            <img src="../../assets/logo.JPG" class="w-24">
+        </div>
+
+        <!-- Photo -->
+        <div class="flex justify-center mb-4">
+            <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-300">
+                <img [src]="loadObject['profileImage']" alt="Photo Unavailable" class="w-full h-full object-cover">
+            </div>
+        </div>
+
+        <!-- Employee Details -->
+        <div class="text-center mb-4">
+            <div class="text-xl font-bold text-gray-800">{{ loadObject['employeeName'] }}</div>
+            <div class="text-sm text-gray-600">{{ loadObject['position'] }}</div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="text-center mb-4">
+            <div class="flex justify-center items-center mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M2.003 5.884l7-3a1 1 0 01.994 0l7 3A1 1 0 0117 7v6a1 1 0 01-.553.894l-7 3a1 1 0 01-.894 0l-7-3A1 1 0 012 13V7a1 1 0 01.003-.116zM10 8.618l-6.297 2.697 6.297 2.696 6.297-2.696L10 8.618zM10 7.382l6.297-2.697L10 2.089 3.703 4.685 10 7.382z"/>
+                </svg>
+                <div class="text-sm text-gray-700">{{ loadObject['email'] }}</div>
+            </div>
+            <div class="flex justify-center items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm2 1h12v1H4V6z" clip-rule="evenodd"/>
+                </svg>
+                <div class="text-sm text-gray-700">{{ loadObject['phoneNumber'] }}</div>
+            </div>
+        </div>
+
+        <!-- Save PDF Button -->
+        <div class="flex justify-center">
+            <div class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-xl cursor-pointer" (click)="saveAsPDF()">
+                Save PDF
+            </div>
+        </div>
+    </div>
 </div>
+
