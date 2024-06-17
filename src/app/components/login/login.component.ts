@@ -63,13 +63,13 @@ export class LoginComponent implements OnInit {
             }
           else
           {
-            alert("Login Failed");
+            alert("Login Failed, Please Try Again");
           }
       },
       (error)=>
         {
           console.log(error);
-          alert(error['error']);
+          alert("Login Failed, Please Try Again");
         }
     )
   }
