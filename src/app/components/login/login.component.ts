@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
             }
           else
           {
-            alert(response['message']);
+            alert("Login Failed");
           }
       },
       (error)=>
