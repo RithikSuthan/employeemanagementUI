@@ -127,4 +127,14 @@ export class EmployeeService {
     const url=`${this.employee_service_url}${EndPoints.changePassword}`;
     return this.http.post(url,postObj);
   }
+  forgetPassword(postObj:any):Observable<any>
+  {
+    const url=`${this.employee_service_url}${EndPoints.forgetPassword}`;
+    return this.http.post(url,postObj);
+  }
+  resetPassword(postObj:any):Observable<any>
+  {
+    const url=`${this.employee_service_url}${EndPoints.resetPassword}`;
+    return this.http.post(url,postObj);
+  }
 }

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   hide:any;
-
+  forgetPassword:any;
   postObj:any=
   {
     userName:'',
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   this.hide=true;
   localStorage.removeItem('userName');
   localStorage.removeItem('company');
+  this.forgetPassword=false;
   }
   showPassword()
   {
@@ -71,5 +72,27 @@ export class LoginComponent implements OnInit {
           alert(error['error']);
         }
     )
+  }
+  forgetPasswordFunc()
+  {
+    this.forgetPassword=!this.forgetPassword;
+  }
+  ForgetPasswordValue()
+  {
+    try
+              {
+                  this.service.forgetPassword(this.postObj).subscribe(
+                    (response)=>
+                      {
+                          alert(response['message']);
+                      }
+                      
+                  )    
+                  this.forgetPassword=!this.forgetPassword;             
+              }
+              catch(error)
+              {
+                console.error(error);
+              }
   }
 }

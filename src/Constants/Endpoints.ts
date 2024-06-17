@@ -19,4 +19,6 @@ export class EndPoints {
     public static deleteTask="/deleteTask";
     public static managerEmployee="/managerEmployee";
     public static changePassword="/changePassword";
+    public static forgetPassword="/forgetPassword";
+    public static resetPassword="/resetPassword";
 }

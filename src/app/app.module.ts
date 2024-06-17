@@ -19,6 +19,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { TaskcardComponent } from './components/taskcard/taskcard.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { ChatbotComponent } from './components/chatbot/chatbot.component';
     LeaveComponent,
     TasksComponent,
     TaskcardComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,
