@@ -75,7 +75,8 @@ export class LoginComponent implements OnInit {
   }
   forgetPasswordFunc()
   {
-    this.forgetPassword=!this.forgetPassword;
+    // this.forgetPassword=!this.forgetPassword;
+    this.router.navigateByUrl("/resetPassword")
   }
   ForgetPasswordValue()
   {
