@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgModel } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   hide:any;
   forgetPassword:any;
+  version:any;
   postObj:any=
   {
     userName:'',
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   localStorage.removeItem('userName');
   localStorage.removeItem('company');
   this.forgetPassword=false;
+  this.version=" Version "+environment.version;
   }
   showPassword()
   {
@@ -75,8 +77,8 @@ export class LoginComponent implements OnInit {
   }
   forgetPasswordFunc()
   {
-    // this.forgetPassword=!this.forgetPassword;
-    this.router.navigateByUrl("/resetPassword")
+    this.forgetPassword=!this.forgetPassword;
+    // this.router.navigateByUrl("/resetPassword")
   }
   ForgetPasswordValue()
   {

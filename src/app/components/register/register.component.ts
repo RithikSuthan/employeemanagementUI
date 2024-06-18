@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class RegisterComponent implements OnInit {
   otpVal:any;
   otpInpVal:any;
   newUser:any;
+  version:any;
   constructor(private router:Router,private employee:EmployeeService) { }
 
   ngOnInit(): void {
@@ -34,6 +36,7 @@ export class RegisterComponent implements OnInit {
     this.otp=true;
     this.otpBox=false;
     this.newUser=true;
+    this.version=" Version "+environment.version;
   }
   otpChange()
   {
@@ -60,6 +63,10 @@ export class RegisterComponent implements OnInit {
           (response)=>
             {
                 alert(response['message']);
+                if(response['message']==="User saved successfully")
+                  {
+                    this.router.navigateByUrl("/");
+                  }
             },
             (error)=>
               {

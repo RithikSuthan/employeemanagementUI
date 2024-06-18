@@ -20,6 +20,7 @@ import { TaskcardComponent } from './components/taskcard/taskcard.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { HashLocationStrategy,LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     DragDropModule 
   ],
   providers: [
-    
+    {provide:LocationStrategy,useClass:HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })
